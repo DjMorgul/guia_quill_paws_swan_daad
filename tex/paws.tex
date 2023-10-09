@@ -2,8 +2,8 @@
 \usepackage[latin1]{inputenc}
 \usepackage[spanish]{babel}
 \usepackage[colorlinks=true,citecolor=black,linkcolor=black,urlcolor=black]{hyperref}
-\usepackage[nottoc,numbib]{tocbibind}  % Para que aparezca la bibliografÌa en el Ìndice
-\usepackage{microtype}  % Para protrusiÛn
+\usepackage[nottoc,numbib]{tocbibind}  % Para que aparezca la bibliograf√≠a en el √≠ndice
+\usepackage{microtype}  % Para protrusi√≥n
 \usepackage{xspace}
 \usepackage[left=1.5cm,right=1.5cm,top=1.5cm,bottom=2cm]{geometry}
 
@@ -17,12 +17,12 @@
 
 \renewcommand{\baselinestretch}{0.85}  % Menor espacio interlineal
 %\setcounter{secnumdepth}{1}  % No numerar las subsecciones
-\setlength{\parskip}{1ex}  % Mayor espacio entre p·rrafos
+\setlength{\parskip}{1ex}  % Mayor espacio entre p√°rrafos
 
 
-\title{GuÌa unificada de los sistemas de creaciÛn de aventuras conversacionales
+\title{Gu√≠a unificada de los sistemas de creaci√≥n de aventuras conversacionales
        \\\ \\\Huge{\quill, \paw, \swan y \daad}}
-\author{\copyright\ 2010, 2018-2023 JosÈ Manuel Ferrer Ortiz}
+\author{\copyright\ 2010, 2018-2023 Jos√© Manuel Ferrer Ortiz}
 
 \begin{document}
 
@@ -31,244 +31,244 @@
 \newpage
 
 \begin{abstract}
-El propÛsito de esta guÌa es servir como referencia del funcionamiento a nivel tÈcnico de los sistemas de creaciÛn de aventuras conversacionales \quill, \paw, \swan y \daad, mostrando diferencias entre los diferentes sistemas, versiones y plataformas de los mismos, y sobre todo documentar caracterÌsticas previamente no documentadas de ellos.
+El prop√≥sito de esta gu√≠a es servir como referencia del funcionamiento a nivel t√©cnico de los sistemas de creaci√≥n de aventuras conversacionales \quill, \paw, \swan y \daad, mostrando diferencias entre los diferentes sistemas, versiones y plataformas de los mismos, y sobre todo documentar caracter√≠sticas previamente no documentadas de ellos.
 \end{abstract}
 
 \section{Vocabulario}
 
-La longitud m·xima de las palabras de vocabulario es de 4 letras en \quill, y de 5 letras en los dem·s sistemas. Esto supone que cualquier palabra introducida en una orden desde el teclado, ser· reducida por el intÈrprete a sus 4 Û 5 primeras letras, para su comparaciÛn con las palabras del vocabulario de la aventura.
+La longitud m√°xima de las palabras de vocabulario es de 4 letras en \quill, y de 5 letras en los dem√°s sistemas. Esto supone que cualquier palabra introducida en una orden desde el teclado, ser√° reducida por el int√©rprete a sus 4 √≥ 5 primeras letras, para su comparaci√≥n con las palabras del vocabulario de la aventura.
 
-El sistema \paw, introdujo la distinciÛn de las palabras de vocabulario por tipo, permitiendo (y obligando) que el programador indique el tipo de cada palabra que aÒada al vocabulario, eligiendo uno de entre los siguientes 7 tipos: verbo, adverbio, nombre (sustantivo), adjetivo, preposiciÛn, conjunciÛn y pronombre.
+El sistema \paw, introdujo la distinci√≥n de las palabras de vocabulario por tipo, permitiendo (y obligando) que el programador indique el tipo de cada palabra que a√±ada al vocabulario, eligiendo uno de entre los siguientes 7 tipos: verbo, adverbio, nombre (sustantivo), adjetivo, preposici√≥n, conjunci√≥n y pronombre.
 
-Esta caracterÌstica fue heredada por los sucesores de \paw: \swan y \daad. Mientras que \quill, no hace distinciÛn entre las palabras de vocabulario por su tipo (podrÌamos decir, que \quill sÛlo soporta un ˙nico tipo de palabras de vocabulario).
+Esta caracter√≠stica fue heredada por los sucesores de \paw: \swan y \daad. Mientras que \quill, no hace distinci√≥n entre las palabras de vocabulario por su tipo (podr√≠amos decir, que \quill s√≥lo soporta un √∫nico tipo de palabras de vocabulario).
 
-Cada palabra de vocabulario solamente deberÌa aparecer una vez en la tabla de vocabulario\footnote{\ En realidad, Cozumel tiene su primera palabra de vocabulario repetida: \texttt{abajo}, incluso en las plataformas de 8 bits.}, para impedir que se le pueda asignar m·s de un tipo de palabra de vocabulario a la misma palabra. Pero se pueden definir nombres que puedan actuar tambiÈn como verbos, cuando la orden no incluye ning˙n verbo, d·ndoles un n˙mero de palabra menor que 20 \cite[secciÛn VOC]{PawsPC}.
+Cada palabra de vocabulario solamente deber√≠a aparecer una vez en la tabla de vocabulario\footnote{\ En realidad, Cozumel tiene su primera palabra de vocabulario repetida: \texttt{abajo}, incluso en las plataformas de 8 bits.}, para impedir que se le pueda asignar m√°s de un tipo de palabra de vocabulario a la misma palabra. Pero se pueden definir nombres que puedan actuar tambi√©n como verbos, cuando la orden no incluye ning√∫n verbo, d√°ndoles un n√∫mero de palabra menor que 20 \cite[secci√≥n VOC]{PawsPC}.
 
 
 \section{Banderas}
 
-Las banderas son posiciones de memoria en las que se almacena, en cada una de ellas, un valor numÈrico entero entre 0 y 255 (ambos incluidos). Estos valores se pueden consultar y modificar, y su funciÛn es dotar de vida a las aventuras, al mantener la mayor parte del estado de ejecuciÛn de las mismas.
+Las banderas son posiciones de memoria en las que se almacena, en cada una de ellas, un valor num√©rico entero entre 0 y 255 (ambos incluidos). Estos valores se pueden consultar y modificar, y su funci√≥n es dotar de vida a las aventuras, al mantener la mayor parte del estado de ejecuci√≥n de las mismas.
 
 \quill proporciona 33 de estas banderas (numeradas de 0 a 32), mientras que sus sucesores (\paw, \swan y \daad) proporcionan 256 banderas (que van desde la 0 hasta la 255).
 
-Sin embargo, no todas las banderas est·n disponibles para cualquier propÛsito, ya que algunas de ellas tienen un significado predeterminado, y nos permitir·n intercambiar con el intÈrprete informaciÛn importante para la aventura.
+Sin embargo, no todas las banderas est√°n disponibles para cualquier prop√≥sito, ya que algunas de ellas tienen un significado predeterminado, y nos permitir√°n intercambiar con el int√©rprete informaci√≥n importante para la aventura.
 
-Al inicio de la ejecuciÛn de la aventura (y cada vez que Èsta se reinicia), el intÈrprete pone todas las banderas a su valor inicial, salvo en \daad versiÛn 1 (al menos hasta la versiÛn EGA de Jabato), donde el intÈrprete sÛlo inicializa las primeras 248 banderas (de la 0 a la 247), y deja las dem·s (de la 248 a la 255) sin cambiar.
+Al inicio de la ejecuci√≥n de la aventura (y cada vez que √©sta se reinicia), el int√©rprete pone todas las banderas a su valor inicial, salvo en \daad versi√≥n 1 (al menos hasta la versi√≥n EGA de Jabato), donde el int√©rprete s√≥lo inicializa las primeras 248 banderas (de la 0 a la 247), y deja las dem√°s (de la 248 a la 255) sin cambiar.
 
-El valor inicial es cero para todas las banderas, salvo la \nameref{flag1} (que sÛlo ser· cero si el jugador comienza la aventura con un inventario vacÌo) y, en los sistemas posteriores a \quill, tambiÈn algunas otras de las banderas que tienen una utilidad predefinida; que podr·n tomar valores iniciales distintos de cero.
+El valor inicial es cero para todas las banderas, salvo la \nameref{flag1} (que s√≥lo ser√° cero si el jugador comienza la aventura con un inventario vac√≠o) y, en los sistemas posteriores a \quill, tambi√©n algunas otras de las banderas que tienen una utilidad predefinida; que podr√°n tomar valores iniciales distintos de cero.
 
-A continuaciÛn, detallaremos el propÛsito que tiene cada bandera, de quÈ modo se utilizan y cÛmo afectar·n a la aventura. Adem·s, indicaremos su valor inicial, en caso de ser distinto de cero; y los sistemas (\quill, \paw, \swan o \daad) a los que se refieren las explicaciones.
+A continuaci√≥n, detallaremos el prop√≥sito que tiene cada bandera, de qu√© modo se utilizan y c√≥mo afectar√°n a la aventura. Adem√°s, indicaremos su valor inicial, en caso de ser distinto de cero; y los sistemas (\quill, \paw, \swan o \daad) a los que se refieren las explicaciones.
 
 \subsection{Bandera 0}
 
 \sistemas{\quill, \paw, \swan y \daad}
 
-Indica al intÈrprete si el jugador est· en un sitio iluminado o, por el contrario, est· en un lugar a oscuras. Un valor de cero significa luz, y cualquier valor distinto de cero significa oscuridad.
+Indica al int√©rprete si el jugador est√° en un sitio iluminado o, por el contrario, est√° en un lugar a oscuras. Un valor de cero significa luz, y cualquier valor distinto de cero significa oscuridad.
 
-\sistemas{\quill, \paw, \swan y \daad versiÛn 1}
+\sistemas{\quill, \paw, \swan y \daad versi√≥n 1}
 
-En el momento de describir la localidad, si esta bandera tiene un valor distinto de cero (oscuridad), se decrementar· la bandera 3 en una unidad. Si, adem·s, no est· presente el objeto 0 (que el intÈrprete considera como una fuente de luz), entonces se decrementar· tambiÈn en una unidad la bandera 4 y, en lugar de mostrarse la descripciÛn de la localidad, se imprimir· el mensaje de sistema 0, que avisa al jugador de que se encuentra a oscuras.
+En el momento de describir la localidad, si esta bandera tiene un valor distinto de cero (oscuridad), se decrementar√° la bandera 3 en una unidad. Si, adem√°s, no est√° presente el objeto 0 (que el int√©rprete considera como una fuente de luz), entonces se decrementar√° tambi√©n en una unidad la bandera 4 y, en lugar de mostrarse la descripci√≥n de la localidad, se imprimir√° el mensaje de sistema 0, que avisa al jugador de que se encuentra a oscuras.
 
-Cada vez que transcurre un turno de juego, el intÈrprete comprueba si esta bandera indica oscuridad. Si es asÌ, entonces decrementar· en una unidad la bandera 9; y, si adem·s, el objeto 0 est· ausente, entonces decrementar· tambiÈn en una unidad la bandera 10.
+Cada vez que transcurre un turno de juego, el int√©rprete comprueba si esta bandera indica oscuridad. Si es as√≠, entonces decrementar√° en una unidad la bandera 9; y, si adem√°s, el objeto 0 est√° ausente, entonces decrementar√° tambi√©n en una unidad la bandera 10.
 
 \subsection{Bandera 1}\label{flag1}
 
 \sistemas{\quill, \paw, \swan y \daad}
 
-Contiene el n˙mero de objetos que el jugador lleva en su inventario. El intÈrprete inicializa esta bandera al valor correcto (el n˙mero de objetos que el jugador lleva al inicio de la aventura), y lo modificar· autom·ticamente cada vez que el jugador coja o deje objetos.
+Contiene el n√∫mero de objetos que el jugador lleva en su inventario. El int√©rprete inicializa esta bandera al valor correcto (el n√∫mero de objetos que el jugador lleva al inicio de la aventura), y lo modificar√° autom√°ticamente cada vez que el jugador coja o deje objetos.
 
 \subsection{Bandera 2}
 
-\sistemas{\quill, \paw, \swan y \daad versiÛn 1}
+\sistemas{\quill, \paw, \swan y \daad versi√≥n 1}
 
-Esta bandera es decrementada en una unidad por el intÈrprete cada vez que describe alguna localidad.
+Esta bandera es decrementada en una unidad por el int√©rprete cada vez que describe alguna localidad.
 
 \subsection{Bandera 3}
 
-\sistemas{\quill, \paw, \swan y \daad versiÛn 1}
+\sistemas{\quill, \paw, \swan y \daad versi√≥n 1}
 
-Esta bandera es decrementada en una unidad por el intÈrprete cada vez que describe alguna localidad en un sitio no iluminado (cuando la bandera 0 est· a un valor distinto de cero).
+Esta bandera es decrementada en una unidad por el int√©rprete cada vez que describe alguna localidad en un sitio no iluminado (cuando la bandera 0 est√° a un valor distinto de cero).
 
 \subsection{Bandera 4}
 
-\sistemas{\quill, \paw, \swan y \daad versiÛn 1}
+\sistemas{\quill, \paw, \swan y \daad versi√≥n 1}
 
-Esta bandera es decrementada en una unidad por el intÈrprete cada vez que describe alguna localidad en un sitio no iluminado (cuando la bandera 0 est· a un valor distinto de cero), pero sÛlo si tampoco est· presente el objeto 0 (fuente de luz).
+Esta bandera es decrementada en una unidad por el int√©rprete cada vez que describe alguna localidad en un sitio no iluminado (cuando la bandera 0 est√° a un valor distinto de cero), pero s√≥lo si tampoco est√° presente el objeto 0 (fuente de luz).
 
 \subsection{Banderas 5 a 8}
 
-\sistemas{\quill, \paw, \swan y \daad versiÛn 1}
+\sistemas{\quill, \paw, \swan y \daad versi√≥n 1}
 
-Estas banderas son decrementadas en una unidad por el intÈrprete cada vez que intenta obtener una frase para ejecutar.
+Estas banderas son decrementadas en una unidad por el int√©rprete cada vez que intenta obtener una frase para ejecutar.
 
-La versiÛn espaÒola de la guÌa tÈcnica de \paw dice en el paso 5 - COGER LA FRASE, que son de la 7 a la 8, pero es una errata. En la guÌa tÈcnica en inglÈs \cite{PawsPC} est· bien.
+La versi√≥n espa√±ola de la gu√≠a t√©cnica de \paw dice en el paso 5 - COGER LA FRASE, que son de la 7 a la 8, pero es una errata. En la gu√≠a t√©cnica en ingl√©s \cite{PawsPC} est√° bien.
 
 \subsection{Bandera 9}
 
-\sistemas{\quill, \paw, \swan y \daad versiÛn 1}
+\sistemas{\quill, \paw, \swan y \daad versi√≥n 1}
 
-Esta bandera es decrementada en una unidad por el intÈrprete cada vez que intenta obtener una frase para ejecutar, cuando el jugador est· en un sitio no iluminado (cuando la bandera 0 est· a un valor distinto de cero).
+Esta bandera es decrementada en una unidad por el int√©rprete cada vez que intenta obtener una frase para ejecutar, cuando el jugador est√° en un sitio no iluminado (cuando la bandera 0 est√° a un valor distinto de cero).
 
 \subsection{Bandera 10}
 
-\sistemas{\quill, \paw, \swan y \daad versiÛn 1}
+\sistemas{\quill, \paw, \swan y \daad versi√≥n 1}
 
-Esta bandera es decrementada en una unidad por el intÈrprete cada vez que intenta obtener una frase para ejecutar, cuando el jugador est· en un sitio no iluminado (cuando la bandera 0 est· a un valor distinto de cero) y adem·s el objeto 0 (fuente de luz) est· ausente.
+Esta bandera es decrementada en una unidad por el int√©rprete cada vez que intenta obtener una frase para ejecutar, cuando el jugador est√° en un sitio no iluminado (cuando la bandera 0 est√° a un valor distinto de cero) y adem√°s el objeto 0 (fuente de luz) est√° ausente.
 
 \subsection{Banderas 11 a 28}
 
 \sistemas{\quill, \paw y \daad}
 
-Estas banderas no tienen ning˙n propÛsito predefinido y, por tanto, pueden ser utilizadas libremente por el programador.
+Estas banderas no tienen ning√∫n prop√≥sito predefinido y, por tanto, pueden ser utilizadas libremente por el programador.
 
 \subsection{Bandera 29}\label{flag29}
 
 \sistema{\quill}
 
-Esta bandera no tiene ning˙n propÛsito predefinido y, por tanto, puede ser utilizada libremente por el programador.
+Esta bandera no tiene ning√∫n prop√≥sito predefinido y, por tanto, puede ser utilizada libremente por el programador.
 \\\ \\
 \sistema{\paw}
 
-El intÈrprete comprueba el valor de esta bandera para saber cu·ndo debe dibujar los gr·ficos en pantalla. FIXME: M·s detalle.
+El int√©rprete comprueba el valor de esta bandera para saber cu√°ndo debe dibujar los gr√°ficos en pantalla. FIXME: M√°s detalle.
 
-Para m·s informaciÛn, consultar la GuÌa TÈcnica de \paw \cite{PawsZX}.
+Para m√°s informaci√≥n, consultar la Gu√≠a T√©cnica de \paw \cite{PawsZX}.
 \\\ \\
 \sistema{\swan}
 
-El intÈrprete comprueba el valor de esta bandera al menos para saber cu·ndo debe dibujar los gr·ficos de localidad en pantalla. En concreto, este es el significado de los bits de esta bandera:
+El int√©rprete comprueba el valor de esta bandera al menos para saber cu√°ndo debe dibujar los gr√°ficos de localidad en pantalla. En concreto, este es el significado de los bits de esta bandera:
 
 \begin{description}
-  \item[Bit 3] Si se est· mostrando ahora mismo (valor 1) o no (valor 0) en la pantalla - en la parte del gr·fico de localidad - el men˙ por iconos de opciones del juego.
+  \item[Bit 3] Si se est√° mostrando ahora mismo (valor 1) o no (valor 0) en la pantalla - en la parte del gr√°fico de localidad - el men√∫ por iconos de opciones del juego.
   \item[Bit 5] Desconocido, hace algo a la hora de imprimir mensajes.
-  \item[Bit 6] Si est· activada (valor 1) o desactivada (valor 0) la impresiÛn de gr·ficos de localidad, lo cual se puede cambiar con el men˙ de opciones del juego.
-  \item[Bit 7] Desconocido, lo modifica el intÈrprete (al menos el de PCW) al leer entrada de texto por parte del jugador, y al esperar una tecla. Tal vez lo use sÛlo de forma interna.
+  \item[Bit 6] Si est√° activada (valor 1) o desactivada (valor 0) la impresi√≥n de gr√°ficos de localidad, lo cual se puede cambiar con el men√∫ de opciones del juego.
+  \item[Bit 7] Desconocido, lo modifica el int√©rprete (al menos el de PCW) al leer entrada de texto por parte del jugador, y al esperar una tecla. Tal vez lo use s√≥lo de forma interna.
 \end{description}
 
 \sistema{\daad}
 
-El intÈrprete inicializa esta bandera a 128 si est· ejecut·ndose con un modo gr·fico de 320 pÌxeles de ancho, con lo cual se dispondr· de 53 columnas para gr·ficos (de 6 pÌxeles de anchura) o texto. Si, en cambio, el intÈrprete se ejecuta en modo texto; entonces inicializar· esta bandera a 0, indicando con ello que se dispondr· de 80 columnas para texto.
+El int√©rprete inicializa esta bandera a 128 si est√° ejecut√°ndose con un modo gr√°fico de 320 p√≠xeles de ancho, con lo cual se dispondr√° de 53 columnas para gr√°ficos (de 6 p√≠xeles de anchura) o texto. Si, en cambio, el int√©rprete se ejecuta en modo texto; entonces inicializar√° esta bandera a 0, indicando con ello que se dispondr√° de 80 columnas para texto.
 
 \subsection{Bandera 30}
 
 \sistemas{\quill, \paw y \daad}
 
-En esta bandera se almacena la puntuaciÛn del jugador.
+En esta bandera se almacena la puntuaci√≥n del jugador.
 
 \subsection{Banderas 31 y 32}
 
 \sistemas{\quill, \paw y \daad}
 
-Estas dos banderas contienen el n˙mero de turnos que han transcurrido desde el inicio del juego.
+Estas dos banderas contienen el n√∫mero de turnos que han transcurrido desde el inicio del juego.
 
-La bandera 31 contiene la parte menos significativa (LSB) y la 32 contiene la m·s significativa (MSB). Es decir, que cuando hayan pasado 255 turnos, la bandera 31 tendr· un valor de 255 y la 32 un valor de 0; y cuando se pase a 256, la bander· 31 guardar· un 0 y la 32 un 1. Dicho de otra forma a˙n, el n˙mero total de turnos ser· 256 multiplicado por el valor de la bandera 32, m·s el valor de la bandera 31.
+La bandera 31 contiene la parte menos significativa (LSB) y la 32 contiene la m√°s significativa (MSB). Es decir, que cuando hayan pasado 255 turnos, la bandera 31 tendr√° un valor de 255 y la 32 un valor de 0; y cuando se pase a 256, la bander√° 31 guardar√° un 0 y la 32 un 1. Dicho de otra forma a√∫n, el n√∫mero total de turnos ser√° 256 multiplicado por el valor de la bandera 32, m√°s el valor de la bandera 31.
 
 \subsection{Bandera 33}
 
 \sistemas{\paw, \swan y \daad}
 
-Contiene el verbo de la sentencia lÛgica actual.
+Contiene el verbo de la sentencia l√≥gica actual.
 
-Si se modifica desde la tabla de respuestas (o desde cualquier subproceso llamado desde esta), las entradas siguientes tendr·n que encajar con esta nueva sentencia lÛgica reciÈn modificada.
+Si se modifica desde la tabla de respuestas (o desde cualquier subproceso llamado desde esta), las entradas siguientes tendr√°n que encajar con esta nueva sentencia l√≥gica reci√©n modificada.
 
 \subsection{Bandera 34}
 
 \sistemas{\paw, \swan y \daad}
 
-Contiene el primer nombre de la sentencia lÛgica actual.
+Contiene el primer nombre de la sentencia l√≥gica actual.
 
-Si se modifica desde la tabla de respuestas (o desde cualquier subproceso llamado desde esta), las entradas siguientes tendr·n que encajar con esta nueva sentencia lÛgica reciÈn modificada.
+Si se modifica desde la tabla de respuestas (o desde cualquier subproceso llamado desde esta), las entradas siguientes tendr√°n que encajar con esta nueva sentencia l√≥gica reci√©n modificada.
 
 \subsection{Bandera 35}
 
 \sistemas{\paw, \swan y \daad}
 
-Contiene el adjetivo del primer nombre de la sentencia lÛgica actual.
+Contiene el adjetivo del primer nombre de la sentencia l√≥gica actual.
 
 \subsection{Bandera 36}
 
 \sistemas{\paw, \swan y \daad}
 
-Contiene el adverbio de la sentencia lÛgica actual.
+Contiene el adverbio de la sentencia l√≥gica actual.
 
 \subsection{Bandera 37}
 
 \sistemas{\paw, \swan y \daad}
 
-Almacena el n˙mero m·ximo de objetos que el jugador es capaz de llevar (en su inventario) a la vez. Su valor inicial es 4, y puede ser modificado con el condacto ABILITY.
+Almacena el n√∫mero m√°ximo de objetos que el jugador es capaz de llevar (en su inventario) a la vez. Su valor inicial es 4, y puede ser modificado con el condacto ABILITY.
 
 \subsection{Bandera 38}
 
 \sistemas{\paw, \swan y \daad}
 
-En esta bandera se mantiene el n˙mero de la localidad actual del jugador.
+En esta bandera se mantiene el n√∫mero de la localidad actual del jugador.
 
 \subsection{Bandera 39}
 
 \sistemas{\paw y \daad}
 
-En esta bandera, se indica el n˙mero de la primera lÌnea en la que se podr· escribir texto. Se puede modificar a travÈs del condacto LINE.
+En esta bandera, se indica el n√∫mero de la primera l√≠nea en la que se podr√° escribir texto. Se puede modificar a trav√©s del condacto LINE.
 
-TODO: Comprobar quÈ ocurre usando LINE junto con el condacto MODE, ver la p·g. 34 de la GuÌa TÈcnica.
+TODO: Comprobar qu√© ocurre usando LINE junto con el condacto MODE, ver la p√°g. 34 de la Gu√≠a T√©cnica.
 
 \paw en Spectrum parece que le asigna un valor inicial de 24.
 
-\daad le asigna un valor inicial de 4 en el intÈrprete de la Aventura Original, y de 13 en el intÈrprete de la versiÛn EGA de Jabato. Pero a˙n asÌ... °imprime desde la primera lÌnea!
+\daad le asigna un valor inicial de 4 en el int√©rprete de la Aventura Original, y de 13 en el int√©rprete de la versi√≥n EGA de Jabato. Pero a√∫n as√≠... ¬°imprime desde la primera l√≠nea!
 
-Seg˙n el manual de \daad, esta bandera no se utiliza, por lo que en las ˙ltimas versiones de este sistema es asÌ.
+Seg√∫n el manual de \daad, esta bandera no se utiliza, por lo que en las √∫ltimas versiones de este sistema es as√≠.
 
 \subsection{Bandera 40}
 
 \sistemas{\paw y \daad}
 
-Algo relacionado con MODE... øel modo de pantalla? FIXME
-Afecta a la parte en que el intÈrprete describe la localidad.
+Algo relacionado con MODE... ¬øel modo de pantalla? FIXME
+Afecta a la parte en que el int√©rprete describe la localidad.
 
-Seg˙n el manual de \daad, esta bandera no se utiliza, por lo que en las ˙ltimas versiones de este sistema es asÌ.
+Seg√∫n el manual de \daad, esta bandera no se utiliza, por lo que en las √∫ltimas versiones de este sistema es as√≠.
 
 \subsection{Bandera 41}
 
 \sistema{\paw}
 
 Algo relacionado con PROTECT... FIXME
-øValor inicial en \paw\ != 0? FIXME
+¬øValor inicial en \paw\ != 0? FIXME
 
 \sistema{\daad}
 
-Si es m˙ltiplo de 8 (seg˙n la GuÌa TÈcnica de \daad \cite[p·g. 61]{DAAD}), las Ûrdenes que introduzca el jugador quedar·n intercaladas entre los textos de la aventura. Si no, las Ûrdenes se obtendr·n en la lÌnea inferior de la ventana de impresiÛn seleccionada, sin afectar al cursor de Èsta, y la orden introducida se borrar· de la pantalla al terminar de procesarla.
+Si es m√∫ltiplo de 8 (seg√∫n la Gu√≠a T√©cnica de \daad \cite[p√°g. 61]{DAAD}), las √≥rdenes que introduzca el jugador quedar√°n intercaladas entre los textos de la aventura. Si no, las √≥rdenes se obtendr√°n en la l√≠nea inferior de la ventana de impresi√≥n seleccionada, sin afectar al cursor de √©sta, y la orden introducida se borrar√° de la pantalla al terminar de procesarla.
 
 \subsection{Bandera 42}
 
 \sistemas{\paw y \daad}
 
-Esta bandera guarda el n˙mero del mensaje de sistema que se imprimir· para alentar o guiar al jugador a que introduzca una nueva orden. Se puede cambiar con el condacto PROMPT (inexistente en \daad versiÛn 2).
+Esta bandera guarda el n√∫mero del mensaje de sistema que se imprimir√° para alentar o guiar al jugador a que introduzca una nueva orden. Se puede cambiar con el condacto PROMPT (inexistente en \daad versi√≥n 2).
 
-El valor 0 (que es el valor por defecto) hace que el intÈrprete elija un mensaje aleatoriamente entre los mensajes de sistema 2, 3, 4 y 5; con una probabilidad de 3/10, 3/10, 3/10 y 1/10, respectivamente.
+El valor 0 (que es el valor por defecto) hace que el int√©rprete elija un mensaje aleatoriamente entre los mensajes de sistema 2, 3, 4 y 5; con una probabilidad de 3/10, 3/10, 3/10 y 1/10, respectivamente.
 
 \subsection{Bandera 43}
 
 \sistemas{\paw, \swan y \daad}
 
-Contiene la preposiciÛn de la sentencia lÛgica actual.
+Contiene la preposici√≥n de la sentencia l√≥gica actual.
 
 \subsection{Bandera 44}
 
 \sistemas{\paw, \swan y \daad}
 
-Contiene el segundo nombre de la sentencia lÛgica actual.
+Contiene el segundo nombre de la sentencia l√≥gica actual.
 
 \subsection{Bandera 45}
 
 \sistemas{\paw, \swan y \daad}
 
-Contiene el adjetivo del segundo nombre de la sentencia lÛgica actual.
+Contiene el adjetivo del segundo nombre de la sentencia l√≥gica actual.
 
-FIXME: øel adjetivo del segundo nombre, o simplemente el segundo adjetivo (el que se escriba en segunda posiciÛn)?
+FIXME: ¬øel adjetivo del segundo nombre, o simplemente el segundo adjetivo (el que se escriba en segunda posici√≥n)?
 
 \subsection{Banderas 46 y 47}
 
 \sistemas{\paw y \daad}
 
-Algo de los pronombres: FIXME. El intÈrprete los inicializa con un valor de 255, lo cual simboliza que no se refiere a ning˙n pronombre.
+Algo de los pronombres: FIXME. El int√©rprete los inicializa con un valor de 255, lo cual simboliza que no se refiere a ning√∫n pronombre.
 
 \subsection{Banderas 48 y 49}
 
@@ -286,9 +286,9 @@ Algo relacionado con el condacto DOALL: FIXME
 
 \sistemas{\paw y \daad}
 
-En esta bandera se guarda el cÛdigo del ˙ltimo objeto referido, normalmente por parte del jugador, obtenido mediante WHATO, pero el programador lo puede cambiar por alg˙n otro objeto.
+En esta bandera se guarda el c√≥digo del √∫ltimo objeto referido, normalmente por parte del jugador, obtenido mediante WHATO, pero el programador lo puede cambiar por alg√∫n otro objeto.
 
-Es utilizado por algunos condactos, al menos por PUTO. Ser· imprimido el nombre de este objeto en lugar de \_ en los mensajes.
+Es utilizado por algunos condactos, al menos por PUTO. Ser√° imprimido el nombre de este objeto en lugar de \_ en los mensajes.
 
 \sistema{\daad}
 
@@ -298,19 +298,19 @@ Es posible que este sea el objeto sobre el que se comprueban atributos con los c
 
 \sistemas{\paw, \swan y \daad}
 
-Almacena el peso m·ximo que el jugador es capaz de cargar en su inventario (contando solamente el peso los objetos que lleve ahÌ, no los que lleve puestos) a la vez. Su valor inicial es 10, y puede ser modificado con el condacto ABILITY.
+Almacena el peso m√°ximo que el jugador es capaz de cargar en su inventario (contando solamente el peso los objetos que lleve ah√≠, no los que lleve puestos) a la vez. Su valor inicial es 10, y puede ser modificado con el condacto ABILITY.
 
 \subsection{Bandera 53}
 
 \sistemas{\paw y \daad}
 
-Con esta bandera, se le indica al intÈrprete el modo en que deseamos que liste los objetos que est·n en el inventario del jugador, øcuando usemos el condacto INVEN?. FIXME: M·s detalle. Afecta a los condactos LISTOBJ y LISTAT.
+Con esta bandera, se le indica al int√©rprete el modo en que deseamos que liste los objetos que est√°n en el inventario del jugador, ¬øcuando usemos el condacto INVEN?. FIXME: M√°s detalle. Afecta a los condactos LISTOBJ y LISTAT.
 
 \subsection{Bandera 54}
 
 \sistemas{\paw y \daad}
 
-El valor de esta bandera es el cÛdigo de la localidad en que se encuentra el objeto actualmente referido (el objeto guardado en la bandera 51).
+El valor de esta bandera es el c√≥digo de la localidad en que se encuentra el objeto actualmente referido (el objeto guardado en la bandera 51).
 
 \subsection{Bandera 55}
 
@@ -334,101 +334,101 @@ Algo relativo a si el objeto referido es una prenda... FIXME
 
 \sistema{\paw}
 
-Esta bandera, inicialmente documentada como reservada para futuras ampliaciones, fue utilizada en las versiones de \paw A16 y posteriores, como parte del soporte para dar Ûrdenes a los PSI. \cite{PawsSupl}
+Esta bandera, inicialmente documentada como reservada para futuras ampliaciones, fue utilizada en las versiones de \paw A16 y posteriores, como parte del soporte para dar √≥rdenes a los PSI. \cite{PawsSupl}
 
 \sistema{\swan}
 
-Esta bandera se utiliza para guardar el n˙mero de parte en ejecuciÛn. El intÈrprete no la cambia por sÌ mismo (salvo en la inicializaciÛn de banderas), pero sÌ que toma ese valor cuando se carga una partida, para cargar y cambiar a la parte que corresponda - es decir, a la parte cuyo n˙mero es el valor para la bandera 58 almacenado en la partida guardada.
+Esta bandera se utiliza para guardar el n√∫mero de parte en ejecuci√≥n. El int√©rprete no la cambia por s√≠ mismo (salvo en la inicializaci√≥n de banderas), pero s√≠ que toma ese valor cuando se carga una partida, para cargar y cambiar a la parte que corresponda - es decir, a la parte cuyo n√∫mero es el valor para la bandera 58 almacenado en la partida guardada.
 
 \sistema{\daad}
 
-En aventuras con versiÛn de formato de base de datos 2, a esta bandera se copia el primer byte de los atributos extra del objeto referido. Lo rellena WHATO.
+En aventuras con versi√≥n de formato de base de datos 2, a esta bandera se copia el primer byte de los atributos extra del objeto referido. Lo rellena WHATO.
 
 \subsection{Bandera 59}
 
 \sistema{\paw}
 
-La GuÌa TÈcnica de \paw \cite{PawsZX} recomienda no utilizar esta bandera, puesto que est· reservada para ampliaciones futuras.
+La Gu√≠a T√©cnica de \paw \cite{PawsZX} recomienda no utilizar esta bandera, puesto que est√° reservada para ampliaciones futuras.
 
 \sistema{\daad}
 
-En aventuras con versiÛn de formato de base de datos 2, a esta bandera se copia el segundo byte de los atributos extra del objeto referido. Lo rellena WHATO.
+En aventuras con versi√≥n de formato de base de datos 2, a esta bandera se copia el segundo byte de los atributos extra del objeto referido. Lo rellena WHATO.
 
 \subsection{Banderas 60 y 61}
 
 \sistema{\paw}
 
-Estas banderas no tienen ning˙n propÛsito predefinido y, por tanto, pueden ser utilizadas libremente por el programador.
+Estas banderas no tienen ning√∫n prop√≥sito predefinido y, por tanto, pueden ser utilizadas libremente por el programador.
 
 \sistema{\daad}
 
-El condacto INKEY guardar· aquÌ la tecla que el jugador estuviese pulsando. El cÛdigo de la tecla queda guardado en la bandera 60. En plataformas de 16 bits, si la tecla pulsada es especial, se guarda su cÛdigo en la bandera 61, y un 0 en la bandera 60. \cite[p·gs. 25, 61 y 62]{DAAD}
+El condacto INKEY guardar√° aqu√≠ la tecla que el jugador estuviese pulsando. El c√≥digo de la tecla queda guardado en la bandera 60. En plataformas de 16 bits, si la tecla pulsada es especial, se guarda su c√≥digo en la bandera 61, y un 0 en la bandera 60. \cite[p√°gs. 25, 61 y 62]{DAAD}
 
 \subsection{Bandera 62}
 
 \sistema{\paw}
 
-Esta bandera no tiene ning˙n propÛsito predefinido y, por tanto, puede ser utilizadas libremente por el programador.
+Esta bandera no tiene ning√∫n prop√≥sito predefinido y, por tanto, puede ser utilizadas libremente por el programador.
 
 \sistema{\daad}
 
-En plataformas Atari ST y PC, aquÌ se refleja cu·l es el modo gr·fico actual de la m·quina. \cite[p·g. 62]{DAAD}
+En plataformas Atari ST y PC, aqu√≠ se refleja cu√°l es el modo gr√°fico actual de la m√°quina. \cite[p√°g. 62]{DAAD}
 
 \subsection{Bandera 63}
 
 \sistema{\paw}
 
-Esta bandera no tiene ning˙n propÛsito predefinido y, por tanto, puede ser utilizada libremente por el programador.
+Esta bandera no tiene ning√∫n prop√≥sito predefinido y, por tanto, puede ser utilizada libremente por el programador.
 
 \sistema{\daad}
 
-El intÈrprete guarda aquÌ el n˙mero de la ventana de impresiÛn activa, al menos en las ˙ltimas versiones de \daad. \cite[p·g. 62]{DAAD}
+El int√©rprete guarda aqu√≠ el n√∫mero de la ventana de impresi√≥n activa, al menos en las √∫ltimas versiones de \daad. \cite[p√°g. 62]{DAAD}
 
 \subsection{Banderas 64 a 255}
 
 \sistemas{\paw y \daad}
 
-Estas banderas no tienen ning˙n propÛsito predefinido y, por tanto, pueden ser utilizadas libremente por el programador.
+Estas banderas no tienen ning√∫n prop√≥sito predefinido y, por tanto, pueden ser utilizadas libremente por el programador.
 
 \subsection{Banderas 248 a 255}
 
-\sistema{\daad versiÛn 1}
+\sistema{\daad versi√≥n 1}
 
 Estas banderas conservan su valor incluso al reiniciar la aventura.
 
 
 \section{Mensajes de sistema}
 
-Los mensajes de sistema son mensajes de informaciÛn que se le ofrecen al jugador, en distintos contextos. A diferencia de los mensajes de usuario, algunos de estos mensajes son mostrados autom·ticamente por el intÈrprete, aunque las aventuras de \paw y \daad pueden mostrarlos tambiÈn en cualquier momento, haciendo uso de la acciÛn SYSMESS (no existente en \quill).
+Los mensajes de sistema son mensajes de informaci√≥n que se le ofrecen al jugador, en distintos contextos. A diferencia de los mensajes de usuario, algunos de estos mensajes son mostrados autom√°ticamente por el int√©rprete, aunque las aventuras de \paw y \daad pueden mostrarlos tambi√©n en cualquier momento, haciendo uso de la acci√≥n SYSMESS (no existente en \quill).
 
-\quill tiene 32 mensajes de sistema, todos ellos con funcionalidades determinadas de antemano. Pero \paw permite hasta 256 mensajes de sistema, de los cuales menos de una cuarta parte tiene finalidades predeterminadas, pudiendo los dem·s utilizarse libremente. Esto, junto con los mensajes de usuario, deja al programador de aventuras \paw con m·s de 440 mensajes de propÛsito general, mientras que \quill sÛlo proporciona los 256 mensajes de usuario.
+\quill tiene 32 mensajes de sistema, todos ellos con funcionalidades determinadas de antemano. Pero \paw permite hasta 256 mensajes de sistema, de los cuales menos de una cuarta parte tiene finalidades predeterminadas, pudiendo los dem√°s utilizarse libremente. Esto, junto con los mensajes de usuario, deja al programador de aventuras \paw con m√°s de 440 mensajes de prop√≥sito general, mientras que \quill s√≥lo proporciona los 256 mensajes de usuario.
 
-Con lo que el autor de este documento sabe de momento de \daad, este sistema proporciona al menos el mismo n˙mero total de mensajes de propÛsito general (todos los de usuario y los libres de sistema). Aunque, Javier San JosÈ en un mensaje \cite{JSJ} de la lista de correo de CAAD, hablaba del soporte de °hasta 256 tablas de mensajes! (supongo, contando la de sistema):
+Con lo que el autor de este documento sabe de momento de \daad, este sistema proporciona al menos el mismo n√∫mero total de mensajes de prop√≥sito general (todos los de usuario y los libres de sistema). Aunque, Javier San Jos√© en un mensaje \cite{JSJ} de la lista de correo de CAAD, hablaba del soporte de ¬°hasta 256 tablas de mensajes! (supongo, contando la de sistema):
 
 \begin{quote}
-\guillemotleft Adem·s se ampliaba el n˙mero de tablas de mensajes. Recuerdo que en PAWS sÛlo habÌa dos tablas de mensajes (la de usuario y la del sistema) con un m·ximo de 256 mensajes cada una. En \daad se podÌa crear hasta 256 tablas de mensajes con 256 mensajes cada una.\guillemotright
+\guillemotleft Adem√°s se ampliaba el n√∫mero de tablas de mensajes. Recuerdo que en PAWS s√≥lo hab√≠a dos tablas de mensajes (la de usuario y la del sistema) con un m√°ximo de 256 mensajes cada una. En \daad se pod√≠a crear hasta 256 tablas de mensajes con 256 mensajes cada una.\guillemotright
 \end{quote}
 
 \subsection{Mensaje 32}
 
 \sistema{\daad}
 
-Como descubriÛ Daniel Carbonell, este mensaje de sistema debe tener valor (no puede ser una cadena vacÌa), de lo contrario en textos largos, el intÈrprete puede omitir la ˙ltima lÌnea en pantalla justo antes de paginar. Al menos, en el caso en que esa ˙ltima lÌnea del bloque termine en la ˙ltima columna de la ventana de impresiÛn.
+Como descubri√≥ Daniel Carbonell, este mensaje de sistema debe tener valor (no puede ser una cadena vac√≠a), de lo contrario en textos largos, el int√©rprete puede omitir la √∫ltima l√≠nea en pantalla justo antes de paginar. Al menos, en el caso en que esa √∫ltima l√≠nea del bloque termine en la √∫ltima columna de la ventana de impresi√≥n.
 
 \subsection{Mensaje 33}
 
 \sistemas{\paw y \daad}
 
-A pesar de no verse afectado por el uso del condacto PROMPT, Èste es el verdadero \emph{prompt} en el sentido original del tÈrmino (cons˙ltese \url{http://es.wikipedia.org/wiki/Prompt}). Como tal, ser· mostrado por el intÈrprete siempre que quede a la espera de recibir cualquier lÌnea de entrada por parte del jugador, a travÈs del teclado.
+A pesar de no verse afectado por el uso del condacto PROMPT, √©ste es el verdadero \emph{prompt} en el sentido original del t√©rmino (cons√∫ltese \url{http://es.wikipedia.org/wiki/Prompt}). Como tal, ser√° mostrado por el int√©rprete siempre que quede a la espera de recibir cualquier l√≠nea de entrada por parte del jugador, a trav√©s del teclado.
 
 
 \section{Condactos}
 
-Hay dos tipos condactos: condiciones y acciones. De hecho, la palabra condacto (en inglÈs, \emph{condact}) proviene de la uniÛn de esas dos palabras en inglÈs: condition (condiciÛn) y action (acciÛn).
+Hay dos tipos condactos: condiciones y acciones. De hecho, la palabra condacto (en ingl√©s, \emph{condact}) proviene de la uni√≥n de esas dos palabras en ingl√©s: condition (condici√≥n) y action (acci√≥n).
 
 \subsection{Condiciones}
 
-Las condiciones son condactos que cambian el flujo de ejecuciÛn impidiendo que se ejecute el siguiente condacto en su bloque, dependiendo de si se cumple o no alguna condiciÛn determinada.
+Las condiciones son condactos que cambian el flujo de ejecuci√≥n impidiendo que se ejecute el siguiente condacto en su bloque, dependiendo de si se cumple o no alguna condici√≥n determinada.
 
 Las condiciones de cada sistema y sus finalidades son:
 
@@ -436,16 +436,16 @@ Las condiciones de cada sistema y sus finalidades son:
 
 \sistemas{\quill, \paw y \daad}
 
-Siendo \emph{porcentaje} un valor entre 1 y 99, ambos incluidos, esta condiciÛn se cumple si este n˙mero es mayor o igual\footnote{\ Los manuales de \quill y \paw dicen aquÌ ``menor o igual'', pero se trata de una errata que ha pasado desapercibida.} que un n˙mero aleatorio entre 1 y 100, tambiÈn inclusive.
+Siendo \emph{porcentaje} un valor entre 1 y 99, ambos incluidos, esta condici√≥n se cumple si este n√∫mero es mayor o igual\footnote{\ Los manuales de \quill y \paw dicen aqu√≠ ``menor o igual'', pero se trata de una errata que ha pasado desapercibida.} que un n√∫mero aleatorio entre 1 y 100, tambi√©n inclusive.
 
-Es decir, que una condiciÛn \texttt{CHANCE 25} ser· satisfactoria un 25\% de las veces, y saltar· en las dem·s ocasiones (el 75\% de veces restante).
+Es decir, que una condici√≥n \texttt{CHANCE 25} ser√° satisfactoria un 25\% de las veces, y saltar√° en las dem√°s ocasiones (el 75\% de veces restante).
 
 
 \subsection{Acciones}
 
-Las acciones son condactos que normalmente no cambian el flujo de ejecuciÛn, y que afectan a la variable del intÈrprete que indica que se hizo algo (la que se consulta con las condiciones ISDONE e ISNDONE).
+Las acciones son condactos que normalmente no cambian el flujo de ejecuci√≥n, y que afectan a la variable del int√©rprete que indica que se hizo algo (la que se consulta con las condiciones ISDONE e ISNDONE).
 
-Salvo que se indique lo contrario en esta secciÛn (o no sea conocido todavÌa), las acciones que est·n aquÌ no cambian el flujo de ejecuciÛn, y dan valor verdadero a la variable que indica que se hizo algo.
+Salvo que se indique lo contrario en esta secci√≥n (o no sea conocido todav√≠a), las acciones que est√°n aqu√≠ no cambian el flujo de ejecuci√≥n, y dan valor verdadero a la variable que indica que se hizo algo.
 
 Las acciones de cada sistema y sus finalidades son:
 
@@ -453,23 +453,23 @@ Las acciones de cada sistema y sus finalidades son:
 
 \sistema{\quill}
 
-Imprime el mensaje de sistema 16 en las dos ˙ltimas lÌneas de la pantalla, y espera a que se pulse una tecla. øLuego borra el mensaje?
+Imprime el mensaje de sistema 16 en las dos √∫ltimas l√≠neas de la pantalla, y espera a que se pulse una tecla. ¬øLuego borra el mensaje?
 
 \sistema{\paw}
 
-Imprime el mensaje de sistema 16 en las dos ˙ltimas lÌneas de la pantalla, espera a que se pulse una tecla o se supere el tiempo muerto, y borra el mensaje.
+Imprime el mensaje de sistema 16 en las dos √∫ltimas l√≠neas de la pantalla, espera a que se pulse una tecla o se supere el tiempo muerto, y borra el mensaje.
 
 \sistemas{\swan y \daad}
 
 Imprime el mensaje de sistema 16, y espera a que se pulse una tecla o se supere el tiempo muerto. Al menos en Jabato, luego no borra el mensaje.
 
-Al menos en \daad, este condacto no tiene en cuenta pulsaciones de teclas modificadoras, al menos no tiene en cuenta: Ctrl, Shift, Alt, Teclas de Windows de abajo (comprobado bajo DOSBox, habrÌa que ver desde Windows).
+Al menos en \daad, este condacto no tiene en cuenta pulsaciones de teclas modificadoras, al menos no tiene en cuenta: Ctrl, Shift, Alt, Teclas de Windows de abajo (comprobado bajo DOSBox, habr√≠a que ver desde Windows).
 
 \subsubsection{CLS}
 
-En \daad, esta acciÛn limpia un recuadro del contenido de la pantalla, en concreto el de la ventana de impresiÛn seleccionada.
+En \daad, esta acci√≥n limpia un recuadro del contenido de la pantalla, en concreto el de la ventana de impresi√≥n seleccionada.
 
-Al menos bajo DOS, por hacer uso de la interrupciÛn Xh Y (TODO: anotar cu·l es), limpiar· un recuadro de m˙ltiplos de $8 \times 8$ pÌxeles. Por esto, al ser las columnas en las ventanas de impresiÛn de 6 pÌxeles de ancho, implica que se limpiar· en ocasiones m·s que solamente la ventana de impresiÛn, limpiando hasta 6 pÌxeles de ancho de m·s. El ancho del recuadro a borrar, es el mÌnimo m˙ltiplo de 8 pÌxeles que sea superior o igual al ancho en pÌxeles de la ventana de impresiÛn.
+Al menos bajo DOS, por hacer uso de la interrupci√≥n Xh Y (TODO: anotar cu√°l es), limpiar√° un recuadro de m√∫ltiplos de $8 \times 8$ p√≠xeles. Por esto, al ser las columnas en las ventanas de impresi√≥n de 6 p√≠xeles de ancho, implica que se limpiar√° en ocasiones m√°s que solamente la ventana de impresi√≥n, limpiando hasta 6 p√≠xeles de ancho de m√°s. El ancho del recuadro a borrar, es el m√≠nimo m√∫ltiplo de 8 p√≠xeles que sea superior o igual al ancho en p√≠xeles de la ventana de impresi√≥n.
 
 \subsubsection{INVEN}
 
@@ -481,62 +481,62 @@ Inexistente en \daad.
 
 \sistemas{\paw y \daad}
 
-Comprobado con \daad (øversiÛn 1?), desde la tabla de proceso 1 no se permite llamar ni al proceso 0 ni al 2, ni a un n˙mero de proceso inexistente (en todos estos casos da error 6).
+Comprobado con \daad (¬øversi√≥n 1?), desde la tabla de proceso 1 no se permite llamar ni al proceso 0 ni al 2, ni a un n√∫mero de proceso inexistente (en todos estos casos da error 6).
 
 \sistema{\daad}
 
-Esta acciÛn quita la marca de que se hizo algo (en la variable del intÈrprete para este propÛsito), lo cual permitir· comprobar su valor (con las condiciones ISDONE e ISNDONE) cuando el flujo de ejecuciÛn regrese a la tabla desde donde se ejecutÛ PROCESS.
+Esta acci√≥n quita la marca de que se hizo algo (en la variable del int√©rprete para este prop√≥sito), lo cual permitir√° comprobar su valor (con las condiciones ISDONE e ISNDONE) cuando el flujo de ejecuci√≥n regrese a la tabla desde donde se ejecut√≥ PROCESS.
 
 \subsubsection{SKIP salto}
 
-\sistema{\daad versiÛn 2}
+\sistema{\daad versi√≥n 2}
 
-Cambia el flujo de ejecuciÛn saltando al inicio de la entrada de proceso (de la actual tabla de proceso) seg˙n el valor del par·metro, que indica el Ìndice de la tabla a la que saltar en relaciÛn a la siguiente entrada a la actual (la entrada donde est· la acciÛn SKIP que se est· ejecutando).
+Cambia el flujo de ejecuci√≥n saltando al inicio de la entrada de proceso (de la actual tabla de proceso) seg√∫n el valor del par√°metro, que indica el √≠ndice de la tabla a la que saltar en relaci√≥n a la siguiente entrada a la actual (la entrada donde est√° la acci√≥n SKIP que se est√° ejecutando).
 
-Es decir, el valor que poner al par·metro debe ser la diferencia entre el Ìndice (n˙mero de entrada en el proceso) de la entrada siguiente a la actual, y el de la entrada a la que se quiere saltar.
+Es decir, el valor que poner al par√°metro debe ser la diferencia entre el √≠ndice (n√∫mero de entrada en el proceso) de la entrada siguiente a la actual, y el de la entrada a la que se quiere saltar.
 
-De esta manera, un valor para \texttt{salto} 0 indica saltar al inicio de la siguiente entrada, un valor de -1 indica saltar al inicio de la entrada actual, -2 es saltar a la entrada anterior, y 1 es saltar a la entrada posterior a la siguiente de la actual (evitando asÌ la ejecuciÛn del resto de la entrada actual, y la totalidad de la entrada siguiente).
+De esta manera, un valor para \texttt{salto} 0 indica saltar al inicio de la siguiente entrada, un valor de -1 indica saltar al inicio de la entrada actual, -2 es saltar a la entrada anterior, y 1 es saltar a la entrada posterior a la siguiente de la actual (evitando as√≠ la ejecuci√≥n del resto de la entrada actual, y la totalidad de la entrada siguiente).
 
-El par·metro de SKIP admite valores entre -128 y 127.
+El par√°metro de SKIP admite valores entre -128 y 127.
 
 \subsubsection{SWAP num\_objeto num\_objeto}
 
 \sistemas{\quill, \paw, \swan y \daad}
 
-Intercambia las localidades donde se encuentran los objetos dados como par·metro.
+Intercambia las localidades donde se encuentran los objetos dados como par√°metro.
 
-En \daad, el compilador DC rescatado no soporta indirecciÛn para esta acciÛn, mientras que los intÈrpretes lo soportan sin problema.
+En \daad, el compilador DC rescatado no soporta indirecci√≥n para esta acci√≥n, mientras que los int√©rpretes lo soportan sin problema.
 
 \subsubsection{TIME}
 
 \sistema{\paw}
 
-En la versiÛn Spectrum de \paw, la duraciÛn es en intervalos de 1,28 segundos \cite{PawsZX}, mientras que en las dem·s versiones, es en intervalos de 1 segundo \cite{PawsPC}.
+En la versi√≥n Spectrum de \paw, la duraci√≥n es en intervalos de 1,28 segundos \cite{PawsZX}, mientras que en las dem√°s versiones, es en intervalos de 1 segundo \cite{PawsPC}.
 
 \subsubsection{WINDOW num\_ventana}
 
 \sistema{\daad}
 
-Selecciona la ventana de impresiÛn de n˙mero \emph{num\_ventana} para trabajar sobre ella. Cualquier tipo de impresiÛn tanto de texto como de gr·ficos, se realiza siempre sobre la ventana seleccionada.
+Selecciona la ventana de impresi√≥n de n√∫mero \emph{num\_ventana} para trabajar sobre ella. Cualquier tipo de impresi√≥n tanto de texto como de gr√°ficos, se realiza siempre sobre la ventana seleccionada.
 
-\daad proporciona ocho ventanas de impresiÛn, numeradas de la 0 a la 7, siendo la n˙mero 1 la seleccionada inicialmente. Para cada una de estas ventanas, guarda la siguiente informaciÛn:
+\daad proporciona ocho ventanas de impresi√≥n, numeradas de la 0 a la 7, siendo la n√∫mero 1 la seleccionada inicialmente. Para cada una de estas ventanas, guarda la siguiente informaci√≥n:
 
 \begin{description}
-  \item[Coordenadas de origen] Por defecto: [0, 0]. Se cambian a travÈs del condacto WINPOS.
+  \item[Coordenadas de origen] Por defecto: [0, 0]. Se cambian a trav√©s del condacto WINPOS.
 
-  \item[TamaÒo de la ventana] Por defecto: [25, 53] en modo gr·fico y [25, 80] en modo texto (vÈase la informaciÛn de la \nameref{flag29}). Se cambia a travÈs del condacto WINSIZE.
+  \item[Tama√±o de la ventana] Por defecto: [25, 53] en modo gr√°fico y [25, 80] en modo texto (v√©ase la informaci√≥n de la \nameref{flag29}). Se cambia a trav√©s del condacto WINSIZE.
 
-  \item[Coordenadas del cursor] Por defecto: [0, 0]. Se cambian a travÈs del condacto PRINTAT.
+  \item[Coordenadas del cursor] Por defecto: [0, 0]. Se cambian a trav√©s del condacto PRINTAT.
 \end{description}
 
 Los condactos PRINTAT, WINAT y WINSIZE modifican solamente la ventana seleccionada.
 
-FIXME: øSe puede redimensionar la ventana 0?
+FIXME: ¬øSe puede redimensionar la ventana 0?
 
 
-\section{EjecuciÛn}
+\section{Ejecuci√≥n}
 
-Esto es lo que realiza el intÈrprete al ejecutarse, en el siguiente orden secuencial, salvo que ocurran cambios de flujo debidos a acciones.
+Esto es lo que realiza el int√©rprete al ejecutarse, en el siguiente orden secuencial, salvo que ocurran cambios de flujo debidos a acciones.
 
 \subsection{Inicializar}
 
@@ -544,7 +544,7 @@ Esto es lo que realiza el intÈrprete al ejecutarse, en el siguiente orden secuen
 
 \subsection{Describir localidad actual}
 
-\sistemas{\quill, \paw, \swan y \daad versiÛn 1}
+\sistemas{\quill, \paw, \swan y \daad versi√≥n 1}
 
 \subsection{Iterar sobre tabla de estado}
 
@@ -552,25 +552,25 @@ Esto es lo que realiza el intÈrprete al ejecutarse, en el siguiente orden secuen
 
 \subsection{Iterar sobre tabla de procesos 1}
 
-\sistemas{\paw, \swan y \daad versiÛn 1}
+\sistemas{\paw, \swan y \daad versi√≥n 1}
 
-Como se ejecuta justo despuÈs de describir la localidad actual, esta tabla de procesos es la que permite aÒadir textos circunstanciales, listar objetos presentes, etc.
+Como se ejecuta justo despu√©s de describir la localidad actual, esta tabla de procesos es la que permite a√±adir textos circunstanciales, listar objetos presentes, etc.
 
 \subsection{Iterar sobre tabla de procesos 2}
 
-\sistemas{\paw, \swan y \daad versiÛn 1}
+\sistemas{\paw, \swan y \daad versi√≥n 1}
 
-Esta tabla de procesos se utiliza para cÛdigo que se ejecuta cada turno.
+Esta tabla de procesos se utiliza para c√≥digo que se ejecuta cada turno.
 
 \subsection{Obtener orden}
 
-\sistemas{\quill, \paw, \swan y \daad versiÛn 1}
+\sistemas{\quill, \paw, \swan y \daad versi√≥n 1}
 
 \subsection{Iterar sobre tabla de procesos 0}
 
 \sistemas{\paw, \swan y \daad}
 
-Esta tabla de procesos es la tabla de respuestas en \paw, \swan y la versiÛn 1 de \daad. En la versiÛn 2 de \daad, esta tabla es el bucle principal de la aventura, el punto de inicio y fin del programa.
+Esta tabla de procesos es la tabla de respuestas en \paw, \swan y la versi√≥n 1 de \daad. En la versi√≥n 2 de \daad, esta tabla es el bucle principal de la aventura, el punto de inicio y fin del programa.
 
 \subsection{Buscar en tabla de conexiones}
 
@@ -645,7 +645,7 @@ Esta tabla de procesos es la tabla de respuestas en \paw, \swan y la versiÛn 1 d
   \url{http://web.archive.org/web/www.yeandle.plus.com/advent/pawtech.html}
 
 \bibitem{JSJ}
-  Javier San JosÈ,
+  Javier San Jos√©,
   ``\emph{RE: el DAAD}''.
   Lista de correo del Club de Aventuras AD,
   29 de noviembre de 2002.\\
