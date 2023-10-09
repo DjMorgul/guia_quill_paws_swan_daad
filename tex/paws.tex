@@ -67,8 +67,7 @@ Indica al intérprete si el jugador está en un sitio iluminado o, por el contrari
 
 \sistemas{\quill, \paw, \swan y \daad versión 1}
 
-En el momento de describir la localidad, si esta bandera tiene un valor distinto de cero (oscuridad), se decrementará la bandera 3 en una unidad. Si, además, no está presente el objeto 0 (que el intérprete considera como una fuente de luz), entonces se decrementará también en una unidad la bandera 4 y, en lugar de mostrarse la descripción de la localidad, se imprimirá el mensaje de sistema 0,
-que avisa al jugador de que se encuentra a oscuras.
+En el momento de describir la localidad, si esta bandera tiene un valor distinto de cero (oscuridad), se decrementará la bandera 3 en una unidad. Si, además, no está presente el objeto 0 (que el intérprete considera como una fuente de luz), entonces se decrementará también en una unidad la bandera 4 y, en lugar de mostrarse la descripción de la localidad, se imprimirá el mensaje de sistema 0, que avisa al jugador de que se encuentra a oscuras.
 
 Cada vez que transcurre un turno de juego, el intérprete comprueba si esta bandera indica oscuridad. Si es así, entonces decrementará en una unidad la bandera 9; y, si además, el objeto 0 está ausente, entonces decrementará también en una unidad la bandera 10.
 
@@ -130,8 +129,7 @@ Esta bandera no tiene ningún propósito predefinido y, por tanto, puede ser utili
 \\\ \\
 \sistema{\paw}
 
-El intérprete comprueba el valor de esta bandera para saber cuándo debe dibujar
-los gráficos en pantalla. FIXME: Más detalle.
+El intérprete comprueba el valor de esta bandera para saber cuándo debe dibujar los gráficos en pantalla. FIXME: Más detalle.
 
 Para más información, consultar la Guía Técnica de \paw \cite{PawsZX}.
 \\\ \\
@@ -160,15 +158,9 @@ En esta bandera se almacena la puntuación del jugador.
 
 \sistemas{\quill, \paw y \daad}
 
-Estas dos banderas contienen el número de turnos que han transcurrido desde el
-inicio del juego.
+Estas dos banderas contienen el número de turnos que han transcurrido desde el inicio del juego.
 
-La bandera 31 contiene la parte menos significativa (LSB) y la 32 contiene la
-más significativa (MSB). Es decir, que cuando hayan pasado 255 turnos, la
-bandera 31 tendrá un valor de 255 y la 32 un valor de 0; y cuando se pase a 256,
-la banderá 31 guardará un 0 y la 32 un 1. Dicho de otra forma aún, el número
-total de turnos será 256 multiplicado por el valor de la bandera 32, más el
-valor de la bandera 31.
+La bandera 31 contiene la parte menos significativa (LSB) y la 32 contiene la más significativa (MSB). Es decir, que cuando hayan pasado 255 turnos, la bandera 31 tendrá un valor de 255 y la 32 un valor de 0; y cuando se pase a 256, la banderá 31 guardará un 0 y la 32 un 1. Dicho de otra forma aún, el número total de turnos será 256 multiplicado por el valor de la bandera 32, más el valor de la bandera 31.
 
 \subsection{Bandera 33}
 
@@ -176,9 +168,7 @@ valor de la bandera 31.
 
 Contiene el verbo de la sentencia lógica actual.
 
-Si se modifica desde la tabla de respuestas (o desde cualquier subproceso
-llamado desde esta), las entradas siguientes tendrán que encajar con esta nueva
-sentencia lógica recién modificada.
+Si se modifica desde la tabla de respuestas (o desde cualquier subproceso llamado desde esta), las entradas siguientes tendrán que encajar con esta nueva sentencia lógica recién modificada.
 
 \subsection{Bandera 34}
 
@@ -186,9 +176,7 @@ sentencia lógica recién modificada.
 
 Contiene el primer nombre de la sentencia lógica actual.
 
-Si se modifica desde la tabla de respuestas (o desde cualquier subproceso
-llamado desde esta), las entradas siguientes tendrán que encajar con esta nueva
-sentencia lógica recién modificada.
+Si se modifica desde la tabla de respuestas (o desde cualquier subproceso llamado desde esta), las entradas siguientes tendrán que encajar con esta nueva sentencia lógica recién modificada.
 
 \subsection{Bandera 35}
 
@@ -206,9 +194,7 @@ Contiene el adverbio de la sentencia lógica actual.
 
 \sistemas{\paw, \swan y \daad}
 
-Almacena el número máximo de objetos que el jugador es capaz de llevar (en su
-inventario) a la vez. Su valor inicial es 4, y puede ser modificado con el
-condacto ABILITY.
+Almacena el número máximo de objetos que el jugador es capaz de llevar (en su inventario) a la vez. Su valor inicial es 4, y puede ser modificado con el condacto ABILITY.
 
 \subsection{Bandera 38}
 
@@ -220,11 +206,9 @@ En esta bandera se mantiene el número de la localidad actual del jugador.
 
 \sistemas{\paw y \daad}
 
-En esta bandera, se indica el número de la primera línea en la que se podrá
-escribir texto. Se puede modificar a través del condacto LINE.
+En esta bandera, se indica el número de la primera línea en la que se podrá escribir texto. Se puede modificar a través del condacto LINE.
 
-TODO: Comprobar qué ocurre usando LINE junto con el condacto MODE, ver la pág.
-34 de la Guía Técnica.
+TODO: Comprobar qué ocurre usando LINE junto con el condacto MODE, ver la pág. 34 de la Guía Técnica.
 
 \paw en Spectrum parece que le asigna un valor inicial de 24.
 
@@ -256,13 +240,9 @@ Si es múltiplo de 8 (según la Guía Técnica de \daad \cite[pág. 61]{DAAD}), las ó
 
 \sistemas{\paw y \daad}
 
-Esta bandera guarda el número del mensaje de sistema que se imprimirá para
-alentar o guiar al jugador a que introduzca una nueva orden. Se puede cambiar
-con el condacto PROMPT (inexistente en \daad versión 2).
+Esta bandera guarda el número del mensaje de sistema que se imprimirá para alentar o guiar al jugador a que introduzca una nueva orden. Se puede cambiar con el condacto PROMPT (inexistente en \daad versión 2).
 
-El valor 0 (que es el valor por defecto) hace que el intérprete elija un mensaje
-aleatoriamente entre los mensajes de sistema 2, 3, 4 y 5; con una probabilidad
-de 3/10, 3/10, 3/10 y 1/10, respectivamente.
+El valor 0 (que es el valor por defecto) hace que el intérprete elija un mensaje aleatoriamente entre los mensajes de sistema 2, 3, 4 y 5; con una probabilidad de 3/10, 3/10, 3/10 y 1/10, respectivamente.
 
 \subsection{Bandera 43}
 
@@ -282,15 +262,13 @@ Contiene el segundo nombre de la sentencia lógica actual.
 
 Contiene el adjetivo del segundo nombre de la sentencia lógica actual.
 
-FIXME: ¿el adjetivo del segundo nombre, o simplemente el segundo adjetivo (el
-que se escriba en segunda posición)?
+FIXME: ¿el adjetivo del segundo nombre, o simplemente el segundo adjetivo (el que se escriba en segunda posición)?
 
 \subsection{Banderas 46 y 47}
 
 \sistemas{\paw y \daad}
 
-Algo de los pronombres: FIXME. El intérprete los inicializa con un valor de 255,
-lo cual simboliza que no se refiere a ningún pronombre.
+Algo de los pronombres: FIXME. El intérprete los inicializa con un valor de 255, lo cual simboliza que no se refiere a ningún pronombre.
 
 \subsection{Banderas 48 y 49}
 
@@ -320,32 +298,25 @@ Es posible que este sea el objeto sobre el que se comprueban atributos con los c
 
 \sistemas{\paw, \swan y \daad}
 
-Almacena el peso máximo que el jugador es capaz de cargar en su inventario
-(contando solamente el peso los objetos que lleve ahí, no los que lleve puestos)
-a la vez. Su valor inicial es 10, y puede ser modificado con el condacto
-ABILITY.
+Almacena el peso máximo que el jugador es capaz de cargar en su inventario (contando solamente el peso los objetos que lleve ahí, no los que lleve puestos) a la vez. Su valor inicial es 10, y puede ser modificado con el condacto ABILITY.
 
 \subsection{Bandera 53}
 
 \sistemas{\paw y \daad}
 
-Con esta bandera, se le indica al intérprete el modo en que deseamos que liste
-los objetos que están en el inventario del jugador, ¿cuando usemos el condacto
-INVEN?. FIXME: Más detalle. Afecta a los condactos LISTOBJ y LISTAT.
+Con esta bandera, se le indica al intérprete el modo en que deseamos que liste los objetos que están en el inventario del jugador, ¿cuando usemos el condacto INVEN?. FIXME: Más detalle. Afecta a los condactos LISTOBJ y LISTAT.
 
 \subsection{Bandera 54}
 
 \sistemas{\paw y \daad}
 
-El valor de esta bandera es el código de la localidad en que se encuentra el
-objeto actualmente referido (el objeto guardado en la bandera 51).
+El valor de esta bandera es el código de la localidad en que se encuentra el objeto actualmente referido (el objeto guardado en la bandera 51).
 
 \subsection{Bandera 55}
 
 \sistemas{\paw y \daad}
 
-Esta bandera proporciona el peso que tiene el objeto actualmente referido (el
-objeto guardado en la bandera 51).
+Esta bandera proporciona el peso que tiene el objeto actualmente referido (el objeto guardado en la bandera 51).
 
 \subsection{Bandera 56}
 
@@ -417,8 +388,7 @@ El intérprete guarda aquí el número de la ventana de impresión activa, al menos 
 
 \sistemas{\paw y \daad}
 
-Estas banderas no tienen ningún propósito predefinido y, por tanto, pueden ser
-utilizadas libremente por el programador.
+Estas banderas no tienen ningún propósito predefinido y, por tanto, pueden ser utilizadas libremente por el programador.
 
 \subsection{Banderas 248 a 255}
 
@@ -429,30 +399,14 @@ Estas banderas conservan su valor incluso al reiniciar la aventura.
 
 \section{Mensajes de sistema}
 
-Los mensajes de sistema son mensajes de información que se le ofrecen al
-jugador, en distintos contextos. A diferencia de los mensajes de usuario,
-algunos de estos mensajes son mostrados automáticamente por el intérprete,
-aunque las aventuras de \paw y \daad pueden mostrarlos también en cualquier
-momento, haciendo uso de la acción SYSMESS (no existente en \quill).
+Los mensajes de sistema son mensajes de información que se le ofrecen al jugador, en distintos contextos. A diferencia de los mensajes de usuario, algunos de estos mensajes son mostrados automáticamente por el intérprete, aunque las aventuras de \paw y \daad pueden mostrarlos también en cualquier momento, haciendo uso de la acción SYSMESS (no existente en \quill).
 
-\quill tiene 32 mensajes de sistema, todos ellos con funcionalidades
-determinadas de antemano. Pero \paw permite hasta 256 mensajes de sistema, de
-los cuales menos de una cuarta parte tiene finalidades predeterminadas, pudiendo
-los demás utilizarse libremente. Esto, junto con los mensajes de usuario, deja
-al programador de aventuras \paw con más de 440 mensajes de propósito general,
-mientras que \quill sólo proporciona los 256 mensajes de usuario.
+\quill tiene 32 mensajes de sistema, todos ellos con funcionalidades determinadas de antemano. Pero \paw permite hasta 256 mensajes de sistema, de los cuales menos de una cuarta parte tiene finalidades predeterminadas, pudiendo los demás utilizarse libremente. Esto, junto con los mensajes de usuario, deja al programador de aventuras \paw con más de 440 mensajes de propósito general, mientras que \quill sólo proporciona los 256 mensajes de usuario.
 
-Con lo que el autor de este documento sabe de momento de \daad, este sistema
-proporciona al menos el mismo número total de mensajes de propósito general
-(todos los de usuario y los libres de sistema). Aunque, Javier San José en un
-mensaje \cite{JSJ} de la lista de correo de CAAD, hablaba del soporte de ¡hasta
-256 tablas de mensajes! (supongo, contando la de sistema):
+Con lo que el autor de este documento sabe de momento de \daad, este sistema proporciona al menos el mismo número total de mensajes de propósito general (todos los de usuario y los libres de sistema). Aunque, Javier San José en un mensaje \cite{JSJ} de la lista de correo de CAAD, hablaba del soporte de ¡hasta 256 tablas de mensajes! (supongo, contando la de sistema):
 
 \begin{quote}
-\guillemotleft Además se ampliaba el número de tablas de mensajes. Recuerdo que
-en PAWS sólo había dos tablas de mensajes (la de usuario y la del sistema) con
-un máximo de 256 mensajes cada una. En \daad se podía crear hasta 256
-tablas de mensajes con 256 mensajes cada una.\guillemotright
+\guillemotleft Además se ampliaba el número de tablas de mensajes. Recuerdo que en PAWS sólo había dos tablas de mensajes (la de usuario y la del sistema) con un máximo de 256 mensajes cada una. En \daad se podía crear hasta 256 tablas de mensajes con 256 mensajes cada una.\guillemotright
 \end{quote}
 
 \subsection{Mensaje 32}
@@ -465,24 +419,16 @@ Como descubrió Daniel Carbonell, este mensaje de sistema debe tener valor (no pu
 
 \sistemas{\paw y \daad}
 
-A pesar de no verse afectado por el uso del condacto PROMPT, éste es el
-verdadero \emph{prompt} en el sentido original del término (consúltese
-\url{http://es.wikipedia.org/wiki/Prompt}). Como tal, será mostrado por el
-intérprete siempre que quede a la espera de recibir cualquier línea de entrada
-por parte del jugador, a través del teclado.
+A pesar de no verse afectado por el uso del condacto PROMPT, éste es el verdadero \emph{prompt} en el sentido original del término (consúltese \url{http://es.wikipedia.org/wiki/Prompt}). Como tal, será mostrado por el intérprete siempre que quede a la espera de recibir cualquier línea de entrada por parte del jugador, a través del teclado.
 
 
 \section{Condactos}
 
-Hay dos tipos condactos: condiciones y acciones. De hecho, la palabra condacto
-(en inglés, \emph{condact}) proviene de la unión de esas dos palabras en inglés:
-condition (condición) y action (acción).
+Hay dos tipos condactos: condiciones y acciones. De hecho, la palabra condacto (en inglés, \emph{condact}) proviene de la unión de esas dos palabras en inglés: condition (condición) y action (acción).
 
 \subsection{Condiciones}
 
-Las condiciones son condactos que cambian el flujo de ejecución
-impidiendo que se ejecute el siguiente condacto en su bloque, dependiendo de si
-se cumple o no alguna condición determinada.
+Las condiciones son condactos que cambian el flujo de ejecución impidiendo que se ejecute el siguiente condacto en su bloque, dependiendo de si se cumple o no alguna condición determinada.
 
 Las condiciones de cada sistema y sus finalidades son:
 
@@ -490,13 +436,9 @@ Las condiciones de cada sistema y sus finalidades son:
 
 \sistemas{\quill, \paw y \daad}
 
-Siendo \emph{porcentaje} un valor entre 1 y 99, ambos incluidos, esta condición
-se cumple si este número es mayor o igual\footnote{\ Los manuales de \quill y
-\paw dicen aquí ``menor o igual'', pero se trata de una errata que ha pasado
-desapercibida.} que un número aleatorio entre 1 y 100, también inclusive.
+Siendo \emph{porcentaje} un valor entre 1 y 99, ambos incluidos, esta condición se cumple si este número es mayor o igual\footnote{\ Los manuales de \quill y \paw dicen aquí ``menor o igual'', pero se trata de una errata que ha pasado desapercibida.} que un número aleatorio entre 1 y 100, también inclusive.
 
-Es decir, que una condición \texttt{CHANCE 25} será satisfactoria un 25\% de las
-veces, y saltará en las demás ocasiones (el 75\% de veces restante).
+Es decir, que una condición \texttt{CHANCE 25} será satisfactoria un 25\% de las veces, y saltará en las demás ocasiones (el 75\% de veces restante).
 
 
 \subsection{Acciones}
@@ -521,9 +463,7 @@ Imprime el mensaje de sistema 16 en las dos últimas líneas de la pantalla, esper
 
 Imprime el mensaje de sistema 16, y espera a que se pulse una tecla o se supere el tiempo muerto. Al menos en Jabato, luego no borra el mensaje.
 
-Al menos en \daad, este condacto no tiene en cuenta pulsaciones de teclas
-modificadoras, al menos no tiene en cuenta: Ctrl, Shift, Alt, Teclas de Windows
-de abajo (comprobado bajo DOSBox, habría que ver desde Windows).
+Al menos en \daad, este condacto no tiene en cuenta pulsaciones de teclas modificadoras, al menos no tiene en cuenta: Ctrl, Shift, Alt, Teclas de Windows de abajo (comprobado bajo DOSBox, habría que ver desde Windows).
 
 \subsubsection{CLS}
 
