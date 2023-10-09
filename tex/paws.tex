@@ -146,7 +146,17 @@ El intérprete comprueba el valor de esta bandera al menos para saber cuándo de
 
 \sistema{\daad}
 
-El intérprete inicializa esta bandera a 128 si está ejecutándose con un modo gráfico de 320 píxeles de ancho, con lo cual se dispondrá de 53 columnas para gráficos (de 6 píxeles de anchura) o texto. Si, en cambio, el intérprete se ejecuta en modo texto; entonces inicializará esta bandera a 0, indicando con ello que se dispondrá de 80 columnas para texto.
+El intérprete inicializa esta bandera a 128 (o 129 si hay ratón) si está ejecutándose con un modo gráfico de 320 píxeles de ancho, con lo cual se dispondrá de 53 columnas para gráficos (de 6 píxeles de anchura) o texto. Si, en cambio, el intérprete se ejecuta en modo texto; entonces inicializará esta bandera a 0, indicando con ello que se dispondrá de 80 columnas para texto.
+
+El resto de bits (inicialmente 0) tiene diferentes significados en el intérprete:
+
+\begin{description}
+  \item[Bit 7] Indica la presencia de un modo gráfico (valor 1) o sólo texto (valor 0)
+  \item[Bit 6] (Sólo versión 1) Si está activado, ejecuta un CLS al dibujar el gráfico de la pantalla actual
+  \item[Bit 5] Si está activada (valor 1) el comando DISPLAY es desactivado (no mostrará gráficos en pantalla)
+  \item[Bit 3] (Sólo versiones 8 bits) Si está activada (valor 1), el comando DISPLAY modifica el color del borde de pantalla
+  \item[Bit 0] (Sólo versión 2 y MS-DOS) Activada por el intérprete si se detectó un ratón conectado.
+\end{description}
 
 \subsection{Bandera 30}
 
