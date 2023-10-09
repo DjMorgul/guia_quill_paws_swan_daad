@@ -43,7 +43,9 @@ El sistema \paw, introdujo la distinción de las palabras de vocabulario por tip
 
 Esta característica fue heredada por los sucesores de \paw: \swan y \daad. Mientras que \quill, no hace distinción entre las palabras de vocabulario por su tipo (podríamos decir, que \quill sólo soporta un único tipo de palabras de vocabulario).
 
-Cada palabra de vocabulario solamente debería aparecer una vez en la tabla de vocabulario\footnote{\ En realidad, Cozumel tiene su primera palabra de vocabulario repetida: \texttt{abajo}, incluso en las plataformas de 8 bits.}, para impedir que se le pueda asignar más de un tipo de palabra de vocabulario a la misma palabra. Pero se pueden definir nombres que puedan actuar también como verbos, cuando la orden no incluye ningún verbo, dándoles un número de palabra menor que 20 \cite[sección VOC]{PawsPC}.
+Cada palabra de vocabulario solamente debería aparecer una vez en la tabla de vocabulario\footnote{\ En realidad, Cozumel tiene su primera palabra de vocabulario repetida: \texttt{abajo}, incluso en las plataformas de 8 bits.}, para impedir que se le pueda asignar más de un tipo de palabra de vocabulario a la misma palabra. Pero se pueden definir nombres que puedan actuar también como verbos, cuando la orden no incluye ningún verbo, dándoles un número de palabra menor que 20 \cite[sección VOC]{PawsPC} (menor que 40 en DAAD versión 2).
+
+En \paw y \daad los nombres por debajo de 50 se consideran nombre propios, y el jugador no se puede referir a ellos con un pronombre ("IT" en la versión inglesa, o cualquier verbo terminado en -LA,-LO,-LAS,-LOS en la española).
 
 
 \section{Banderas}
@@ -223,9 +225,9 @@ TODO: Comprobar qué ocurre usando LINE junto con el condacto MODE, ver la pág.
 
 \paw en Spectrum parece que le asigna un valor inicial de 24.
 
-\daad le asigna un valor inicial de 4 en el intérprete de la Aventura Original, y de 13 en el intérprete de la versión EGA de Jabato. Pero aún así... ¡imprime desde la primera línea!
+\daad en la versión 1 de \daad, contiene el modo gráfico actual. En la versión DOS, los valores generalmente serán 4 para CGA (320x200 a 4 colores), 7 para texto monocromo (80x25), o 13 para EGA (320x200 a 16 colores). En Atari ST, generalmente contendrá 0 para modo de 320x200 a 16 colores, o 1 para modo 640x200 a 4 colores.
 
-Según el manual de \daad, esta bandera no se utiliza, por lo que en las últimas versiones de este sistema es así.
+En la versión 2 esta bandera no se utiliza.
 
 \subsection{Bandera 40}
 
@@ -279,7 +281,7 @@ FIXME: ¿el adjetivo del segundo nombre, o simplemente el segundo adjetivo (el q
 
 \sistemas{\paw y \daad}
 
-Algo de los pronombres: FIXME. El intérprete los inicializa con un valor de 255, lo cual simboliza que no se refiere a ningún pronombre.
+Contienen el nombre y adjetivo (respectivamente) al que se puede referir el jugador con un pronombre (generalmente "IT" en la versión inglesa; en la versión española se acepta una terminación -LA/-LO/-LAS/-LOS).
 
 \subsection{Banderas 48 y 49}
 
@@ -299,11 +301,9 @@ Algo relacionado con el condacto DOALL: FIXME
 
 En esta bandera se guarda el código del último objeto referido, normalmente por parte del jugador, obtenido mediante WHATO, pero el programador lo puede cambiar por algún otro objeto.
 
+Cuando esta bandera es rellenada por WHATO o SETCO, se rellenan a su vez las banderas 54 a 57 (y también 58/59 en \daad versión 2), con información sobre el objeto referido.
+
 Es utilizado por algunos condactos, al menos por PUTO. Será imprimido el nombre de este objeto en lugar de \_ en los mensajes.
-
-\sistema{\daad}
-
-Es posible que este sea el objeto sobre el que se comprueban atributos con los condactos HASAT y HASNAT. FIXME
 
 \subsection{Bandera 52}
 
@@ -333,13 +333,13 @@ Esta bandera proporciona el peso que tiene el objeto actualmente referido (el ob
 
 \sistemas{\paw y \daad}
 
-Algo relativo a si el objeto referido es un contenedor... FIXME
+Esta bandera contendrá 128 si el objeto actualmente referido (el guardado en la bandera 51) es un contenedor.
 
 \subsection{Bandera 57}
 
 \sistemas{\paw y \daad}
 
-Algo relativo a si el objeto referido es una prenda... FIXME
+Esta bandera contendrá 128 si el objeto actualmente referido (el guardado en la bandera 51) es una prenda.
 
 \subsection{Bandera 58}
 
@@ -385,6 +385,10 @@ Esta bandera no tiene ningún propósito predefinido y, por tanto, puede ser uti
 
 En plataformas Atari ST y PC, aquí se refleja cuál es el modo gráfico actual de la máquina. \cite[pág. 62]{DAAD}
 
+En Atari ST, 0 indica modo de baja resolución (320x200 a 16 colores) y 1, alta resolución (640x200 a 4 colores). En modo de alta resolución, \daad utiliza un juego de caracteres de 8x8 en lugar de 6x8 (y las posiciones de las ventanas se ajustan de forma acorde) y no soporta gráficos.
+
+En PC, los valores posibles son 4 (CGA 320x200 a 4 colores), 7 (texto monocromo 80x25), 13 (EGA 320x200 a 16 colores) y 141 (VGA 320x200 a 16 colores, con paleta editable; 141 equivale a 13 + 128, el bit 7 se utiliza para indicar la presencia de paleta de colores modificable).
+
 \subsection{Bandera 63}
 
 \sistema{\paw}
@@ -394,6 +398,8 @@ Esta bandera no tiene ningún propósito predefinido y, por tanto, puede ser uti
 \sistema{\daad}
 
 El intérprete guarda aquí el número de la ventana de impresión activa, al menos en las últimas versiones de \daad. \cite[pág. 62]{DAAD}
+
+Este valor se actualiza por el condact WINDOW y su propósito es informativo. Es decir, modificarlo no tiene ningún efecto en el intérprete.
 
 \subsection{Banderas 64 a 255}
 
