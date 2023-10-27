@@ -35,7 +35,7 @@
 El propósito de esta guía es servir como referencia del funcionamiento a nivel técnico de los sistemas de creación de aventuras conversacionales \quill, \paw, \swan y \daad, mostrando diferencias entre los diferentes sistemas, versiones y plataformas de los mismos, y sobre todo documentar características previamente no documentadas de ellos.
 \end{abstract}
 
-\section{Vocabulario}
+\section{Vocabulario}\label{vocab}
 
 La longitud máxima de las palabras de vocabulario es de 4 letras en \quill, y de 5 letras en los demás sistemas. Esto supone que cualquier palabra introducida en una orden desde el teclado, será reducida por el intérprete a sus 4 ó 5 primeras letras, para su comparación con las palabras del vocabulario de la aventura.
 
@@ -45,7 +45,9 @@ Esta característica fue heredada por los sucesores de \paw: \swan y \daad. Mien
 
 Cada palabra de vocabulario solamente debería aparecer una vez en la tabla de vocabulario\footnote{\ En realidad, Cozumel tiene su primera palabra de vocabulario repetida: \texttt{abajo}, incluso en las plataformas de 8 bits.}, para impedir que se le pueda asignar más de un tipo de palabra de vocabulario a la misma palabra. Pero se pueden definir nombres que puedan actuar también como verbos, cuando la orden no incluye ningún verbo, dándoles un número de palabra menor que 20 \cite[sección VOC]{PawsPC} (menor que 40 en DAAD versión 2).
 
-En \paw y \daad los nombres por debajo de 50 se consideran nombre propios, y el jugador no se puede referir a ellos con un pronombre (\texttt{IT} en la versión inglesa, o cualquier verbo terminado en \texttt{-LA}, \texttt{-LO}, \texttt{-LAS}, \texttt{-LOS} en la española).
+En \paw y \daad los nombres por debajo de 50 se consideran nombres propios, con lo que el jugador no se puede referir a ellos con un pronombre.
+
+A parte de los pronombres definidos como palabra de vocabulario, los intérpretes españoles reconocen también los pronombres enclíticos, buscando las terminaciones \texttt{-LA}, \texttt{-LO}, \texttt{-LAS}, \texttt{-LOS} cuando se usen sobre un verbo.
 
 
 \section{Banderas}
@@ -281,7 +283,7 @@ FIXME: ¿el adjetivo del segundo nombre, o simplemente el segundo adjetivo (el q
 
 \sistemas{\paw y \daad}
 
-Contienen el nombre y adjetivo (respectivamente) al que se puede referir el jugador con un pronombre (generalmente \texttt{IT} en la versión inglesa; en la versión española se acepta una terminación \texttt{-LA}/\texttt{-LO}/\texttt{-LAS}/\texttt{-LOS}).
+Contienen el nombre y adjetivo (respectivamente) al que se puede referir el jugador con un pronombre (véase \nameref{vocab}).
 
 \subsection{Banderas 48 y 49}
 
