@@ -206,6 +206,8 @@ El resto de bits (inicialmente 0) tiene diferentes significados en el intérpret
 \sistema{\quill en QL}
 
 Esta bandera no tiene ningún propósito predefinido y, por tanto, puede ser utilizada libremente por el programador.
+
+En esta plataforma, la puntuación se almacena en la \textbf{\nameref{flag60}}.
 \\\ \\
 \sistemas{\quill en otras plataformas, \paw, \swan y \daad}
 
@@ -216,6 +218,8 @@ En esta bandera se almacena la puntuación del jugador.
 \sistema{\quill en QL}
 
 Estas banderas no tienen ningún propósito predefinido y, por tanto, pueden ser utilizadas libremente por el programador.
+
+En esta plataforma, el número de turnos se almacena en las \hyperref[flag61]{\textbf{banderas 61 y 62}}.
 \\\ \\
 \sistemas{\quill en otras plataformas, \paw y \daad}
 
@@ -513,7 +517,7 @@ La Guía Técnica de \paw \cite{PawsZX} recomienda no utilizar esta bandera, pue
 
 En aventuras con versión de formato de base de datos 2, a esta bandera se copia el segundo byte de los atributos extra del objeto referido. Lo rellena WHATO.
 
-\subsection{Bandera 60}
+\subsection{Bandera 60}\label{flag60}
 
 \sistema{\quill en QL}
 
@@ -527,7 +531,7 @@ Esta bandera no tiene ningún propósito predefinido y, por tanto, puede ser uti
 
 El condacto INKEY guardará aquí el código de la tecla que el jugador estuviese pulsando. En plataformas de 16 bits, si la tecla pulsada es especial, se guarda su código en la bandera 61, y un 0 en esta bandera. \cite[págs. 25, 61 y 62]{DAAD}
 
-\subsection{Bandera 61}
+\subsection{Bandera 61}\label{flag61}
 
 \sistema{\quill en QL}
 
