@@ -1,8 +1,11 @@
 \documentclass[11pt, a5paper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
+\addto\captionsspanish{\renewcommand{\tablename}{Tabla}}  % Para que no la llame Cuadro
 \usepackage[colorlinks=true,citecolor=black,linkcolor=black,urlcolor=black]{hyperref}
 \usepackage[nottoc,numbib]{tocbibind}  % Para que aparezca la bibliografía en el índice
+\usepackage{array}      % Para opciones de tabla
+\usepackage{caption}    % Para poner margen tras el caption de la tabla
 \usepackage{microtype}  % Para protrusión
 \usepackage{xspace}
 \usepackage[left=1.5cm,right=1.5cm,top=1.5cm,bottom=2cm]{geometry}
@@ -18,6 +21,8 @@
 \renewcommand{\baselinestretch}{0.85}  % Menor espacio interlineal
 %\setcounter{secnumdepth}{1}  % No numerar las subsecciones
 \setlength{\parskip}{1ex}  % Mayor espacio entre párrafos
+
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}  % Columna de ancho determinado alineada a la izquierda
 
 
 \title{Guía unificada de los sistemas de creación de aventuras conversacionales
@@ -62,6 +67,28 @@ En \paw y \daad los nombres con código por debajo de 50 se consideran nombres p
 En \quill para la plataforma Sinclair QL, con las palabras de código desde 200 en adelante al ser asignadas como nombre de algún objeto, se considerará tal objeto como que se puede vestir y desvestir. Es decir, las acciones AUTOW (auto-wear) y AUTOR (auto-remove) sólo surtirán efecto en los objetos que tengan una palabra asignada de código mayor a 199.
 
 Aparte de los pronombres definidos como palabra de vocabulario, los intérpretes españoles reconocen también los pronombres enclíticos, buscando las terminaciones \texttt{-LA}, \texttt{-LO}, \texttt{-LAS}, \texttt{-LOS} cuando se usen sobre un verbo.
+
+\begin{table}[]
+\centering
+\captionsetup{margin=1cm}
+\caption{Función especial según código y tipo de palabra}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{L{1cm}L{1.75cm}p{1.25cm}L{5cm}}
+\hline
+\textbf{Rango} & \textbf{Sistema} & \textbf{Tipo} & \textbf{Función} \\ \hline
+0         & Todos                   & Todos          & Reservado para marcar fin de secciones en la base de datos  \\ \hline
+1         & Con editor por menús    & Todos          & Reservado para la palabra comodín asterisco (\texttt{*})    \\ \hline
+1 a 12    & \quill                  &                & Verbo de dirección                                          \\ \hline
+1 a 13    & Compilados              & Nombre o verbo & Verbo de dirección                                          \\ \hline
+2 a 13    & \paw por menús          & Nombre o verbo & Verbo de dirección                                          \\ \hline
+1 a 19    & Todos                   & Nombre         & Convertible a verbo                                         \\ \hline
+1 a 19    & \swan                   & Prepo-sición   & Convertible a verbo                                         \\ \hline
+1 a 39    & \daad\newline versión 2 & Nombre         & Convertible a verbo                                         \\ \hline
+1 a 49    & \paw y \daad            & Nombre         & Nombre propio (no referible con pronombres)                 \\ \hline
+200 a 254 & \quill en Sinclair QL   &                & Aplicado sobre objeto, se podrá vestir y desvestir          \\ \hline
+255       & Todos                   & Todos          & Reservado para la palabra comodín (normalmente \texttt{\_}) \\ \hline
+\end{tabular}
+\end{table}
 
 
 \section{Banderas}
