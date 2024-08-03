@@ -43,13 +43,25 @@ La longitud máxima de las palabras de vocabulario es de 4 letras en \quill, y d
 
 El sistema \paw, introdujo la distinción de las palabras de vocabulario por tipo, permitiendo (y obligando) que el programador indique el tipo de cada palabra que añada al vocabulario, eligiendo uno de entre los siguientes 7 tipos: verbo, adverbio, nombre (sustantivo), adjetivo, preposición, conjunción y pronombre.
 
-Esta característica fue heredada por los sucesores de \paw: \swan y \daad. Mientras que \quill, no hace distinción entre las palabras de vocabulario por su tipo (podríamos decir, que \quill sólo soporta un único tipo de palabras de vocabulario).
+Esta característica fue heredada por los sistemas sucesores de \paw: \swan y \daad. Mientras que \quill no hace distinción entre las palabras de vocabulario por su tipo (podríamos decir, que \quill sólo soporta un único tipo de palabras de vocabulario), aunque sí las distingue por su código, de forma similar a como se hace en sus sucesores.
 
-Cada palabra de vocabulario solamente debería aparecer una vez en la tabla de vocabulario\footnote{\ En realidad, Cozumel tiene su primera palabra de vocabulario repetida: \texttt{abajo}, incluso en las plataformas de 8 bits.}, para impedir que se le pueda asignar más de un tipo de palabra de vocabulario a la misma palabra. Pero se pueden definir nombres que puedan actuar también como verbos, cuando la orden no incluye ningún verbo, dándoles un número de palabra menor que 20 \cite[sección VOC]{PawsPC} (menor que 40 en DAAD versión 2).
+Como código de palabra, sólo se permite usar valores entre 1 y 254. Los valores 0 y 255 están reservados en todos los sistemas. El valor 0 se utiliza para marcas de fin de sección (como al final de la tabla de vocabulario para indicar que no hay más palabras, y en las cabeceras de tabla de proceso para indicar que no hay más entradas), y el 255 representa la palabra comodín (null word en inglés), que normalmente es el guión bajo (\texttt{\_}), para encajar cualquier verbo, nombre o adjetivo en esa posición.
 
-En \paw y \daad los nombres por debajo de 50 se consideran nombres propios, con lo que el jugador no se puede referir a ellos con un pronombre.
+En versiones de \paw de editor por menús (o sea, las que no se compilaban desde código fuente SCE), el código de palabra 1 está reservado también para la palabra comodín asterisco (\texttt{*}), que es equivalente a la palabra comodín del guión bajo, pero las entradas de proceso con ellas aparecerán antes que las de otras palabras en esa posición, dado que en esas versiones de editor las entradas de proceso van ordenadas por código, de menor a mayor, primero por verbo y luego por nombre.
 
-A parte de los pronombres definidos como palabra de vocabulario, los intérpretes españoles reconocen también los pronombres enclíticos, buscando las terminaciones \texttt{-LA}, \texttt{-LO}, \texttt{-LAS}, \texttt{-LOS} cuando se usen sobre un verbo.
+Cada palabra de vocabulario solamente debería aparecer una vez en la tabla de vocabulario\footnote{\ En realidad, Cozumel tiene su primera palabra de vocabulario repetida: \texttt{abajo}, incluso en las plataformas de 8 bits.}, para impedir que se le pueda asignar más de un tipo de palabra de vocabulario a la misma palabra. Pero sí que se puede asignar el mismo código a diferentes palabras, y en el caso de ser del mismo tipo, el intérprete las considera como sinónimos. Esto alivia también un poco las limitaciones del número de palabras por usarse un sólo byte para el código, al poder utilizar el mismo código en palabras de tipo diferente, que de esta manera no serán sinónimos y se tratarán como palabras diferentes.
+
+En el sistema \quill, las palabras con código menor que 13 se considera que son verbos de dirección. En \paw y superiores, esto mismo ocurre con verbos (y nombres cuando actúen como verbo en la sentencia lógica) cuando su código es menor que 14, por lo que efectivamente disponen de una palabra adicional de dirección o movimiento respecto a \quill.
+
+En los sistemas con distinción de tipo de palabra se pueden definir nombres convertibles a verbo, dándoles un número de palabra menor que 20 \cite[sección VOC]{PawsPC}, o menor que 40 en el caso de \daad versión 2. Se convertirán a verbo en la sentencia lógica cuando la orden introducida por el jugador no incluya ningún verbo.
+
+El sistema \swan dispone también de preposiciones convertibles a verbo, y son aquellas con código menor que 20. Esto permite, por ejemplo, que una palabra \texttt{DENTRO} se pueda usar tanto como preposición, como verbo de movimiento (y como palabra de dirección para las conexiones), si se le pone un código inferior a 14. Evidentemente, con un código de 14 a 19 podría actuar también como verbo en la sentencia lógica, pero entonces no se consideraría como dirección/movimiento.
+
+En \paw y \daad los nombres con código por debajo de 50 se consideran nombres propios, con lo que el jugador no se puede referir a ellos con un pronombre.
+
+En \quill para la plataforma Sinclair QL, con las palabras de código desde 200 en adelante al ser asignadas como nombre de algún objeto, se considerará tal objeto como que se puede vestir y desvestir. Es decir, las acciones AUTOW (auto-wear) y AUTOR (auto-remove) sólo surtirán efecto en los objetos que tengan una palabra asignada de código mayor a 199.
+
+Aparte de los pronombres definidos como palabra de vocabulario, los intérpretes españoles reconocen también los pronombres enclíticos, buscando las terminaciones \texttt{-LA}, \texttt{-LO}, \texttt{-LAS}, \texttt{-LOS} cuando se usen sobre un verbo.
 
 
 \section{Banderas}
