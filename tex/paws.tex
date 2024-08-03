@@ -83,7 +83,7 @@ A continuación, detallaremos el propósito que tiene cada bandera, de qué modo
 \sistemas{\quill, \paw, \swan y \daad}
 
 Indica al intérprete si el jugador está en un sitio iluminado o, por el contrario, está en un lugar a oscuras. Un valor de cero significa luz, y cualquier valor distinto de cero significa oscuridad.
-
+\\\ \\
 \sistemas{\quill, \paw, \swan y \daad versión 1}
 
 En el momento de describir la localidad, si esta bandera tiene un valor distinto de cero (oscuridad), se decrementará la bandera 3 en una unidad. Si, además, no está presente el objeto 0 (que el intérprete considera como una fuente de luz), entonces se decrementará también en una unidad la bandera 4 y, en lugar de mostrarse la descripción de la localidad, se imprimirá el mensaje de sistema 0, que avisa al jugador de que se encuentra a oscuras.
@@ -101,18 +101,30 @@ Contiene el número de objetos que el jugador lleva en su inventario. El intérp
 \sistemas{\quill, \paw, \swan y \daad versión 1}
 
 Esta bandera es decrementada en una unidad por el intérprete cada vez que describe alguna localidad.
+\\\ \\
+\sistema{\daad versión 2}
+
+Esta bandera no tiene ningún propósito predefinido y, por tanto, puede ser utilizada libremente por el programador.
 
 \subsection{Bandera 3}
 
 \sistemas{\quill, \paw, \swan y \daad versión 1}
 
 Esta bandera es decrementada en una unidad por el intérprete cada vez que describe alguna localidad en un sitio no iluminado (cuando la bandera 0 está a un valor distinto de cero).
+\\\ \\
+\sistema{\daad versión 2}
+
+Esta bandera no tiene ningún propósito predefinido y, por tanto, puede ser utilizada libremente por el programador.
 
 \subsection{Bandera 4}
 
 \sistemas{\quill, \paw, \swan y \daad versión 1}
 
 Esta bandera es decrementada en una unidad por el intérprete cada vez que describe alguna localidad en un sitio no iluminado (cuando la bandera 0 está a un valor distinto de cero), pero sólo si tampoco está presente el objeto 0 (fuente de luz).
+\\\ \\
+\sistema{\daad versión 2}
+
+Esta bandera no tiene ningún propósito predefinido y, por tanto, puede ser utilizada libremente por el programador.
 
 \subsection{Banderas 5 a 8}
 
@@ -121,18 +133,30 @@ Esta bandera es decrementada en una unidad por el intérprete cada vez que descr
 Estas banderas son decrementadas en una unidad por el intérprete cada vez que intenta obtener una frase para ejecutar.
 
 La versión española de la guía técnica de \paw dice en el paso 5 - COGER LA FRASE, que son de la 7 a la 8, pero es una errata. En la guía técnica en inglés \cite{PawsPC} está bien.
+\\\ \\
+\sistema{\daad versión 2}
+
+Estas banderas no tienen ningún propósito predefinido y, por tanto, pueden ser utilizadas libremente por el programador.
 
 \subsection{Bandera 9}
 
 \sistemas{\quill, \paw, \swan y \daad versión 1}
 
 Esta bandera es decrementada en una unidad por el intérprete cada vez que intenta obtener una frase para ejecutar, cuando el jugador está en un sitio no iluminado (cuando la bandera 0 está a un valor distinto de cero).
+\\\ \\
+\sistema{\daad versión 2}
+
+Esta bandera no tiene ningún propósito predefinido y, por tanto, puede ser utilizada libremente por el programador.
 
 \subsection{Bandera 10}
 
 \sistemas{\quill, \paw, \swan y \daad versión 1}
 
 Esta bandera es decrementada en una unidad por el intérprete cada vez que intenta obtener una frase para ejecutar, cuando el jugador está en un sitio no iluminado (cuando la bandera 0 está a un valor distinto de cero) y además el objeto 0 (fuente de luz) está ausente.
+\\\ \\
+\sistema{\daad versión 2}
+
+Esta bandera no tiene ningún propósito predefinido y, por tanto, puede ser utilizada libremente por el programador.
 
 \subsection{Banderas 11 a 28}
 
