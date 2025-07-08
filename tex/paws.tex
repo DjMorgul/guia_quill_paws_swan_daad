@@ -27,7 +27,7 @@
 
 \title{Guía unificada de los sistemas de creación de aventuras conversacionales
        \\\ \\\Huge{\quill, \paw, \swan y \daad}}
-\author{\copyright\ 2010, 2018-2024 José Manuel Ferrer Ortiz
+\author{\copyright\ 2010, 2018-2025 José Manuel Ferrer Ortiz
        \\\ \copyright\ 2023 José Luis Cebrián}
 
 \hypersetup{pdftitle={Guía unificada de los sistemas de creación de aventuras conversacionales Quill, PAW, SWAN y DAAD}, pdfauthor={José Manuel Ferrer Ortiz y José Luis Cebrián}}
@@ -562,9 +562,7 @@ El condacto INKEY guardará aquí el código de la tecla que el jugador estuvies
 
 \sistema{\quill en QL}
 
-Esta bandera contiene la parte menos significativa (LSB) del número de turnos que han transcurrido desde el inicio del juego.
-
-Es decir, que cuando hayan pasado 255 turnos, esta bandera tendrá un valor de 255 y la 62 un valor de 0; y cuando se pase a 256 turnos, esta bandera guardará un 0 y la 62 un 1. Dicho de otra forma aún, el número total de turnos será 256 multiplicado por el valor de la bandera 62, más el valor de esta bandera.
+Esta bandera contiene la parte más significativa (MSB) del número de turnos que han transcurrido desde el inicio del juego. Ver explicación en la \hyperref[flag62]{\textbf{bandera 62}}.
 \\\ \\
 \sistema{\paw}
 
@@ -574,11 +572,13 @@ Esta bandera no tiene ningún propósito predefinido y, por tanto, puede ser uti
 
 En plataformas de 16 bits, si la tecla pulsada es especial, el condacto INKEY guardará aquí el código de la tecla que el jugador estuviese pulsando, y un 0 en la bandera 60. \cite[págs. 25, 61 y 62]{DAAD}
 
-\subsection{Bandera 62}
+\subsection{Bandera 62}\label{flag62}
 
 \sistema{\quill en QL}
 
-Esta bandera contiene la parte más significativa (MSB) del número de turnos que han transcurrido desde el inicio del juego.
+Esta bandera contiene la parte menos significativa (LSB) del número de turnos que han transcurrido desde el inicio del juego.
+
+Es decir, que cuando hayan pasado 255 turnos, esta bandera tendrá un valor de 255 y la 61 un valor de 0; y cuando se pase a 256 turnos, esta bandera guardará un 0 y la 61 un 1. Dicho de otra forma aún, el número total de turnos será 256 multiplicado por el valor de la bandera 61, más el valor de esta bandera.
 \\\ \\
 \sistema{\paw}
 
