@@ -18,6 +18,8 @@
 \newcommand{\sistema}[1]{\noindent Sistema: #1 \nopagebreak}
 \newcommand{\sistemas}[1]{\noindent Sistemas: #1 \nopagebreak}
 
+\newcommand{\footnoteref}[2]{\hyperref[#1]{\textsuperscript{#2}}}
+
 \renewcommand{\baselinestretch}{0.85}  % Menor espacio interlineal
 %\setcounter{secnumdepth}{1}  % No numerar las subsecciones
 \setlength{\parskip}{1ex}  % Mayor espacio entre párrafos
@@ -266,6 +268,12 @@ La bandera 31 contiene la parte menos significativa (LSB) y la 32 contiene la m�
 
 Esta bandera no tiene ningún propósito predefinido y, por tanto, puede ser utilizada libremente por el programador.
 \\\ \\
+\sistema{\quill al menos en CP/M\cite{QuillQDB}}
+\newcounter{sysflagCPM}
+Esta bandera es de sistema, normalmente no accesible por métodos usuales, pero el intérprete no pone impedimento para usarla, por lo que se puede utilizar con herramientas que permitan su uso\footnote{\ Como NAPS\cite{NAPS}, o txt2qdb para CP/M, que forma parte de UnQuill\cite{UnQuill} desde su versión 0.15\label{sysflagCPM}}\setcounter{sysflagCPM}{\value{footnote}}.
+
+Contiene la primera palabra de la sentencia lógica actual.
+\\\ \\
 \sistemas{\paw, \swan y \daad}
 
 Contiene el verbo de la sentencia lógica actual.
@@ -277,6 +285,12 @@ Si se modifica desde la tabla de respuestas (o desde cualquier subproceso llamad
 \sistema{\quill en QL}
 
 Esta bandera no tiene ningún propósito predefinido y, por tanto, puede ser utilizada libremente por el programador.
+\\\ \\
+\sistema{\quill al menos en CP/M\cite{QuillQDB}}
+
+Esta bandera es de sistema, normalmente no accesible por métodos usuales, pero el intérprete no pone impedimento para usarla, por lo que se puede utilizar con herramientas que permitan su uso\footnoteref{sysflagCPM}{\thesysflagCPM}.
+
+Contiene la segunda palabra de la sentencia lógica actual.
 \\\ \\
 \sistemas{\paw, \swan y \daad}
 
@@ -290,6 +304,12 @@ Si se modifica desde la tabla de respuestas (o desde cualquier subproceso llamad
 
 Esta bandera no tiene ningún propósito predefinido y, por tanto, puede ser utilizada libremente por el programador.
 \\\ \\
+\sistema{\quill al menos en CP/M\cite{QuillQDB}}
+
+Esta bandera es de sistema, normalmente no accesible por métodos usuales, pero el intérprete no pone impedimento para usarla, por lo que se puede utilizar con herramientas que permitan su uso\footnoteref{sysflagCPM}{\thesysflagCPM}.
+
+Contiene la tercera palabra de la sentencia lógica actual.
+\\\ \\
 \sistemas{\paw, \swan y \daad}
 
 Contiene el adjetivo del primer nombre de la sentencia lógica actual.
@@ -299,6 +319,12 @@ Contiene el adjetivo del primer nombre de la sentencia lógica actual.
 \sistema{\quill en QL}
 
 Esta bandera no tiene ningún propósito predefinido y, por tanto, puede ser utilizada libremente por el programador.
+\\\ \\
+\sistema{\quill al menos en CP/M\cite{QuillQDB}}
+
+Esta bandera es de sistema, normalmente no accesible por métodos usuales, pero el intérprete no pone impedimento para usarla, por lo que se puede utilizar con herramientas que permitan su uso\footnoteref{sysflagCPM}{\thesysflagCPM}.
+
+Contiene la cuarta palabra de la sentencia lógica actual.
 \\\ \\
 \sistemas{\paw, \swan y \daad}
 
@@ -310,9 +336,11 @@ Contiene el adverbio de la sentencia lógica actual.
 
 Esta bandera no tiene ningún propósito predefinido y, por tanto, puede ser utilizada libremente por el programador.
 \\\ \\
-\sistemas{\paw, \swan y \daad}
+\sistemas{\quill al menos en CP/M\cite{QuillQDB}, \paw, \swan y \daad}
 
-Almacena el número máximo de objetos que el jugador es capaz de llevar (en su inventario) a la vez. Su valor inicial es 4, y puede ser modificado con el condacto ABILITY.
+En \quill, esta bandera es de sistema, normalmente no accesible por métodos usuales, pero el intérprete no pone impedimento para usarla, por lo que se puede utilizar con herramientas que permitan su uso\footnoteref{sysflagCPM}{\thesysflagCPM}.
+
+Almacena el número máximo de objetos que el jugador es capaz de llevar (en su inventario) a la vez. Su valor inicial es 4, y en los sistemas posteriores a \quill puede ser modificado con el condacto ABILITY.
 
 \subsection{Bandera 38}
 
@@ -320,9 +348,13 @@ Almacena el número máximo de objetos que el jugador es capaz de llevar (en su 
 
 Esta bandera no tiene ningún propósito predefinido y, por tanto, puede ser utilizada libremente por el programador.
 \\\ \\
-\sistemas{\paw, \swan y \daad}
+\sistemas{\quill al menos en CP/M\cite{QuillQDB}, \paw, \swan y \daad}
+
+En \quill, esta bandera es de sistema, normalmente no accesible por métodos usuales, pero el intérprete no pone impedimento para usarla, por lo que se puede utilizar con herramientas que permitan su uso\footnoteref{sysflagCPM}{\thesysflagCPM}.
 
 En esta bandera se mantiene el número de la localidad actual del jugador.
+
+Esta bandera no es solo para fines informativos, sino que modificarla afectará al intérprete, el cual usa la posición de memoria de esta bandera para todo lo que le requiera consultar en qué localidad está el jugador.
 
 \subsection{Bandera 39}
 
@@ -871,6 +903,18 @@ Esta tabla de procesos es la tabla de respuestas en \paw, \swan y la versión 1 
   Version 1.0,
   octubre de 2020.\\
   \url{http://8bitag.com/info/documents/Quill-AdventureWriter-Reference.pdf}
+
+\bibitem{QuillQDB}
+  John Elliott,
+  ``\emph{UnQuill: Disassemble games written with the `Quill' adventure game system}''.\\
+  \url{https://www.seasip.info/Unix/UnQuill}
+
+\bibitem{UnQuill}
+  John Elliott,
+  ``\emph{Quill QDB file format}''.
+  Version 0.2,
+  15 de septiembre de 2023.\\
+  \url{https://www.seasip.info/Unix/UnQuill/qdb.html}
 
 \bibitem{PawsZX}
   Tim J. Gilberts,
