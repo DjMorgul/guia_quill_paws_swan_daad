@@ -95,9 +95,15 @@ Aparte de los pronombres definidos como palabra de vocabulario, los intérpretes
 
 Las banderas son posiciones de memoria en las que se almacena, en cada una de ellas, un valor numérico entero entre 0 y 255 (ambos incluidos). Estos valores se pueden consultar y modificar, y su función es dotar de vida a las aventuras, al mantener la mayor parte del estado de ejecución de las mismas.
 
-\quill proporciona 33 de estas banderas (numeradas de 0 a 32), salvo en la plataforma Sinclair QL, donde proporciona 63 banderas (de la 0 a la 62 \cite{QuillQL}). Mientras que sus sucesores (\paw, \swan y \daad) proporcionan 256 banderas (que van desde la 0 hasta la 255).
+\quill proporciona 33 de estas banderas (numeradas de 0 a 32), salvo en la plataforma Sinclair QL, donde proporciona 63 banderas (de la 0 a la 62 \cite{QuillQL}).
 
-Sin embargo, no todas las banderas están disponibles para cualquier propósito, ya que algunas de ellas tienen un significado predeterminado, y nos permitirán intercambiar con el intérprete información importante para la aventura.
+Fuera de ese rango hay algunas banderas más, llamadas banderas de sistema, que contienen información adicional necesaria para ejecutar la aventura: como la localidad actual, el número máximo de objetos llevables, o las palabras de la sentencia lógica actual.
+
+Los editores y compiladores originales de \quill comercializados para el público general no permiten que se acceda ni se modifique a las banderas de sistema. No obstante, los intérpretes sí suelen permitirlo sin trabas, por lo que con herramientas como NAPS\cite{NAPS} se puede construir o adaptar aventuras que accedan a las banderas de sistema para funcionalidad avanzada.
+
+Los sistemas sucesores a \quill (\paw, \swan y \daad) proporcionan 256 banderas (que van desde la 0 hasta la 255), que incluyen tanto las banderas accesibles ordinariamente desde \quill (también conocidas como banderas de usuario), como las banderas de sistema.
+
+Es importante tener en cuenta que no todas las banderas están disponibles para cualquier propósito, ya que algunas de ellas tienen un significado predeterminado, y nos permitirán intercambiar con el intérprete información importante para la aventura; y otras son auto-decrementadas o auto-incrementadas por éste durante la ejecución de la aventura.
 
 Al inicio de la ejecución de la aventura (y cada vez que ésta se reinicia), el intérprete pone todas las banderas a su valor inicial, salvo en \daad versión 1 (al menos hasta la versión EGA de Jabato), donde el intérprete sólo inicializa las primeras 248 banderas (de la 0 a la 247), y deja las demás (de la 248 a la 255) sin cambiar.
 
@@ -890,6 +896,11 @@ Esta tabla de procesos es la tabla de respuestas en \paw, \swan y la versión 1 
   ``\emph{A Technical guide to: DAAD Adventure Writer - Version 2 Release 1. A multi-machine adventure writing system. Revised in November '91}''.
   Infinite Imaginations,
   1988-1991.
+
+\bibitem{NAPS}
+  José Manuel Ferrer Ortiz,
+  ``\emph{NAPS - The New Age PAW-like System - Herramientas para sistemas PAW-like}''.\\
+  \url{https://github.com/daad-adventure-writer/NAPS}
 
 \end{thebibliography}
 
