@@ -646,10 +646,18 @@ Esta bandera no tiene ningún propósito predefinido y, por tanto, puede ser uti
 
 El intérprete guarda aquí el número de la ventana de impresión activa, al menos en las últimas versiones de \daad. \cite[pág. 62]{DAAD}
 
-Este valor se actualiza por el condact WINDOW y su propósito es informativo. Es decir, modificarlo no tiene ningún efecto en el intérprete.
+Este valor se actualiza por el condacto WINDOW y su propósito es informativo. Es decir, modificarlo no tiene ningún efecto en el intérprete.
 
 \subsection{Banderas 64 a 255}
 
+\sistema{\quill en QL}
+
+Estas banderas son de sistema, no accesibles por métodos usuales, pero el intérprete no pone impedimento para usarlas, por lo que se pueden utilizar con herramientas que permitan su uso, como NAPS\cite{NAPS}.
+
+La bandera 64 contiene la localidad actual del objeto 0. En caso de tener la aventura más de un objeto, las banderas posteriores a la 64 contienen la localidad de los objetos siguientes, conteniendo por ejemplo la bandera 65 la localidad correspondiente al objeto 1, la 66 la del objeto 2, etc. Y la bandera siguiente al número de objetos (es decir, la bandera 65 en aventuras que solo tengan un objeto), contiene un valor 255, indicando el fin de la lista de ubicación de los objetos, que no se debería modificar para no entorpecer el correcto funcionamiento del intérprete.
+
+Las banderas siguientes (posteriores a la que indica el fin de la lista de ubicación de los objetos) hasta la bandera 255 inclusive, pueden utilizarse sin problema como banderas de propósito general. No obstante, estas banderas no se inicializarán, por lo que conservarán su valor incluso si se reinicia la aventura, por lo que se deberán inicializar manualmente. Pero su valor sí se almacenará tanto al guardar la partida con el condacto SAVE, como con el condacto RAMSAVE, y se recuperará su valor con las acciones LOAD y RAMLOAD.
+\\\ \\
 \sistemas{\paw y \daad}
 
 Estas banderas no tienen ningún propósito predefinido y, por tanto, pueden ser utilizadas libremente por el programador.
